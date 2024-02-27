@@ -10,19 +10,24 @@ using System.Windows.Forms;
 
 namespace vscam
 {
-    public partial class Home : Form
+    public partial class formVsCam : Form
     {
-        public Home()
+        public formVsCam()
         {
             InitializeComponent();
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
+        private void flowLayoutPanel3_Paint(object sender, PaintEventArgs e)
         {
 
         }
 
-        private void Home_Load(object sender, EventArgs e)
+        private void pbMain_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtHistogram_TextChanged(object sender, EventArgs e)
         {
 
         }
