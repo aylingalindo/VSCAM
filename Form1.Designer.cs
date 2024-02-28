@@ -79,7 +79,7 @@ namespace vscam
             this.flowLayoutPanel1.Controls.Add(this.pictureBox2);
             this.flowLayoutPanel1.Controls.Add(this.txtDescription);
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(296, 142);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(310, 162);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(309, 300);
             this.flowLayoutPanel1.TabIndex = 2;
@@ -94,13 +94,14 @@ namespace vscam
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 2;
             this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(144)))), ((int)(((byte)(178)))), ((int)(((byte)(192)))));
-            this.ClientSize = new System.Drawing.Size(903, 575);
+            this.ClientSize = new System.Drawing.Size(931, 614);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Name = "Home";
             this.Text = "Home";

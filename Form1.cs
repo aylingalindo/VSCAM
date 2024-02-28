@@ -26,5 +26,12 @@ namespace vscam
         {
 
         }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            formVsCam form2 = new formVsCam();
+            form2.Show();
+            this.Hide();
+        }
     }
 }
