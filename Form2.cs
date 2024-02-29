@@ -36,17 +36,6 @@ namespace vscam
             btnBack.Visible = true;
 
             flowFiltros.Visible = true;
-            txtFilterValue.Visible = true;
-            /*btnBrightness.Visible = true;
-            btnContrast.Visible = true;
-            btnBlur.Visible = true;
-            btnEnhance.Visible = true;
-            btnFlip.Visible = true;
-            btnInvert.Visible = true;
-            btnNoise.Visible = true;
-            btnPixel.Visible = true;
-            btnRgb.Visible = true;
-            btnSharpen.Visible = true;*/
 
         }
 
@@ -60,46 +49,128 @@ namespace vscam
 
             flowFiltros.Visible = false;
             txtFilterValue.Visible = false;
-            /*btnBrightness.Visible = false;
-            btnContrast.Visible = false;
-            btnBlur.Visible = false;
-            btnEnhance.Visible = false;
-            btnFlip.Visible = false;
-            btnInvert.Visible = false;
-            btnNoise.Visible = false;
-            btnPixel.Visible = false;
-            btnRgb.Visible = false;
-            btnSharpen.Visible = false;*/
-        }
-
-        private void btnCamara_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void flowSideBar_Paint(object sender, PaintEventArgs e)
-        {
-
+            tbFilterValue.Visible = false;
+            panelRGB.Visible = false;
+            btnExport.Visible = false;
+            panelCamara.Visible = false;
         }
 
         private void btnSharpen_Click(object sender, EventArgs e)
         {
+            tbFilterValue.Visible = true;
+            txtFilterValue.Visible = true;
+        }
+
+        private void btnBrightness_Click(object sender, EventArgs e)
+        {
+            tbFilterValue.Visible = true;
+            txtFilterValue.Visible = true;
 
         }
 
-        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        private void tbFilterValue_Scroll(object sender, EventArgs e)
         {
 
         }
 
-        private void divNavbar_Paint(object sender, PaintEventArgs e)
+        private void btnNoise_Click(object sender, EventArgs e)
+        {
+            tbFilterValue.Visible = true;
+            txtFilterValue.Visible = true;
+            panelRGB.Visible = false;
+
+        }
+
+        private void btnContrast_Click(object sender, EventArgs e)
+        {
+            tbFilterValue.Visible = true;
+            txtFilterValue.Visible = true;
+            panelRGB.Visible = false;
+        }
+
+        private void btnPixel_Click(object sender, EventArgs e)
+        {
+            tbFilterValue.Visible = true;
+            txtFilterValue.Visible = true;
+            panelRGB.Visible = false;
+        }
+
+        private void btnBlur_Click(object sender, EventArgs e)
+        {
+            tbFilterValue.Visible = true;
+            txtFilterValue.Visible = true;
+            panelRGB.Visible = false;
+        }
+
+        private void btnEnhance_Click(object sender, EventArgs e)
+        {
+            tbFilterValue.Visible = true;
+            txtFilterValue.Visible = true;
+            panelRGB.Visible = false;
+        }
+
+        private void btnInvert_Click(object sender, EventArgs e)
+        {
+            tbFilterValue.Visible = false;
+            txtFilterValue.Visible = false;
+            panelRGB.Visible = false;
+        }
+
+        private void btnFlip_Click(object sender, EventArgs e)
+        {
+            tbFilterValue.Visible = false;
+            txtFilterValue.Visible = false;
+            panelRGB.Visible = false;
+        }
+
+        private void btnRgb_Click(object sender, EventArgs e)
+        {
+            tbFilterValue.Visible = false;
+            txtFilterValue.Visible = true;
+
+            // rgb buttons
+            panelRGB.Visible = true;
+        }
+
+        private void formVsCam_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnCamara_Click(object sender, EventArgs e)
+        {
+            flowImageEdited.Visible = false;
+            flowSideBar.Visible = false;
+            panelCamara.Visible = true;
+
+            btnFilters.Visible = false;
+            btnCamara.Visible = false;
+            btnFile.Visible = false;
+            btnBack.Visible = true;
+
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnFile_Click(object sender, EventArgs e)
+        {
+            btnFilters.Visible = false;
+            btnCamara.Visible = false;
+            btnFile.Visible = false;
+
+            btnExport.Visible = true;
+            btnBack.Visible = true;
+
+        }
+
+        private void btnHome_Click(object sender, EventArgs e)
+        {
+            Home form1 = new Home();
+            form1.Show();
+            this.Hide();
         }
     }
 }

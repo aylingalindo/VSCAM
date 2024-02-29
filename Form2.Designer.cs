@@ -47,6 +47,7 @@
             this.btnSharpen = new System.Windows.Forms.Button();
             this.btnBlur = new System.Windows.Forms.Button();
             this.btnEnhance = new System.Windows.Forms.Button();
+            this.btnExport = new System.Windows.Forms.Button();
             this.flowSideBar = new System.Windows.Forms.FlowLayoutPanel();
             this.txtOriginal = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -54,16 +55,25 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.txtFilterValue = new System.Windows.Forms.TextBox();
             this.tbFilterValue = new System.Windows.Forms.TrackBar();
+            this.panelRGB = new System.Windows.Forms.Panel();
+            this.btnRgbRed = new System.Windows.Forms.Button();
+            this.btnRgbGreen = new System.Windows.Forms.Button();
+            this.btnRgbBlue = new System.Windows.Forms.Button();
             this.pbMain = new System.Windows.Forms.PictureBox();
             this.flowImageEdited = new System.Windows.Forms.FlowLayoutPanel();
+            this.panelCamara = new System.Windows.Forms.Panel();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.divNavbar.SuspendLayout();
             this.flowFiltros.SuspendLayout();
             this.flowSideBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbFilterValue)).BeginInit();
+            this.panelRGB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbMain)).BeginInit();
             this.flowImageEdited.SuspendLayout();
+            this.panelCamara.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
             // 
             // divNavbar
@@ -77,6 +87,7 @@
             this.divNavbar.Controls.Add(this.btnFile);
             this.divNavbar.Controls.Add(this.btnFilters);
             this.divNavbar.Controls.Add(this.flowFiltros);
+            this.divNavbar.Controls.Add(this.btnExport);
             this.divNavbar.Dock = System.Windows.Forms.DockStyle.Top;
             this.divNavbar.Location = new System.Drawing.Point(0, 0);
             this.divNavbar.Margin = new System.Windows.Forms.Padding(3, 3, 0, 0);
@@ -84,7 +95,6 @@
             this.divNavbar.Size = new System.Drawing.Size(916, 42);
             this.divNavbar.TabIndex = 1;
             this.divNavbar.WrapContents = false;
-            this.divNavbar.Paint += new System.Windows.Forms.PaintEventHandler(this.divNavbar_Paint);
             // 
             // flowInsideNavbarContent
             // 
@@ -113,6 +123,7 @@
             this.btnHome.Size = new System.Drawing.Size(41, 31);
             this.btnHome.TabIndex = 0;
             this.btnHome.UseVisualStyleBackColor = false;
+            this.btnHome.Click += new System.EventHandler(this.btnHome_Click);
             // 
             // btnCamara
             // 
@@ -160,6 +171,7 @@
             this.btnFile.TabIndex = 0;
             this.btnFile.Text = "File";
             this.btnFile.UseVisualStyleBackColor = false;
+            this.btnFile.Click += new System.EventHandler(this.btnFile_Click);
             // 
             // btnFilters
             // 
@@ -191,10 +203,9 @@
             this.flowFiltros.Controls.Add(this.btnEnhance);
             this.flowFiltros.Location = new System.Drawing.Point(238, 3);
             this.flowFiltros.Name = "flowFiltros";
-            this.flowFiltros.Size = new System.Drawing.Size(635, 34);
+            this.flowFiltros.Size = new System.Drawing.Size(563, 34);
             this.flowFiltros.TabIndex = 5;
             this.flowFiltros.Visible = false;
-            this.flowFiltros.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel1_Paint);
             // 
             // btnBrightness
             // 
@@ -209,6 +220,7 @@
             this.btnBrightness.TabIndex = 2;
             this.btnBrightness.Text = "Brightness";
             this.btnBrightness.UseVisualStyleBackColor = false;
+            this.btnBrightness.Click += new System.EventHandler(this.btnBrightness_Click);
             // 
             // btnInvert
             // 
@@ -223,6 +235,7 @@
             this.btnInvert.TabIndex = 3;
             this.btnInvert.Text = "Invert";
             this.btnInvert.UseVisualStyleBackColor = false;
+            this.btnInvert.Click += new System.EventHandler(this.btnInvert_Click);
             // 
             // btnNoise
             // 
@@ -237,6 +250,7 @@
             this.btnNoise.TabIndex = 4;
             this.btnNoise.Text = "Noise";
             this.btnNoise.UseVisualStyleBackColor = false;
+            this.btnNoise.Click += new System.EventHandler(this.btnNoise_Click);
             // 
             // btnContrast
             // 
@@ -251,6 +265,7 @@
             this.btnContrast.TabIndex = 5;
             this.btnContrast.Text = "Contrast";
             this.btnContrast.UseVisualStyleBackColor = false;
+            this.btnContrast.Click += new System.EventHandler(this.btnContrast_Click);
             // 
             // btnRgb
             // 
@@ -265,6 +280,7 @@
             this.btnRgb.TabIndex = 6;
             this.btnRgb.Text = "RGB";
             this.btnRgb.UseVisualStyleBackColor = false;
+            this.btnRgb.Click += new System.EventHandler(this.btnRgb_Click);
             // 
             // btnFlip
             // 
@@ -279,6 +295,7 @@
             this.btnFlip.TabIndex = 7;
             this.btnFlip.Text = "Flip";
             this.btnFlip.UseVisualStyleBackColor = false;
+            this.btnFlip.Click += new System.EventHandler(this.btnFlip_Click);
             // 
             // btnPixel
             // 
@@ -293,6 +310,7 @@
             this.btnPixel.TabIndex = 8;
             this.btnPixel.Text = "Pixel";
             this.btnPixel.UseVisualStyleBackColor = false;
+            this.btnPixel.Click += new System.EventHandler(this.btnPixel_Click);
             // 
             // btnSharpen
             // 
@@ -322,6 +340,7 @@
             this.btnBlur.TabIndex = 10;
             this.btnBlur.Text = "Blur";
             this.btnBlur.UseVisualStyleBackColor = false;
+            this.btnBlur.Click += new System.EventHandler(this.btnBlur_Click);
             // 
             // btnEnhance
             // 
@@ -336,6 +355,21 @@
             this.btnEnhance.TabIndex = 11;
             this.btnEnhance.Text = "Enhance";
             this.btnEnhance.UseVisualStyleBackColor = false;
+            this.btnEnhance.Click += new System.EventHandler(this.btnEnhance_Click);
+            // 
+            // btnExport
+            // 
+            this.btnExport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(144)))), ((int)(((byte)(178)))), ((int)(((byte)(192)))));
+            this.btnExport.FlatAppearance.BorderSize = 0;
+            this.btnExport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExport.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExport.Location = new System.Drawing.Point(807, 3);
+            this.btnExport.Name = "btnExport";
+            this.btnExport.Size = new System.Drawing.Size(57, 31);
+            this.btnExport.TabIndex = 12;
+            this.btnExport.Text = "Export";
+            this.btnExport.UseVisualStyleBackColor = false;
+            this.btnExport.Visible = false;
             // 
             // flowSideBar
             // 
@@ -346,13 +380,13 @@
             this.flowSideBar.Controls.Add(this.pictureBox2);
             this.flowSideBar.Controls.Add(this.txtFilterValue);
             this.flowSideBar.Controls.Add(this.tbFilterValue);
+            this.flowSideBar.Controls.Add(this.panelRGB);
             this.flowSideBar.Dock = System.Windows.Forms.DockStyle.Right;
-            this.flowSideBar.Location = new System.Drawing.Point(675, 42);
+            this.flowSideBar.Location = new System.Drawing.Point(648, 42);
             this.flowSideBar.Margin = new System.Windows.Forms.Padding(9, 9, 3, 3);
             this.flowSideBar.Name = "flowSideBar";
-            this.flowSideBar.Size = new System.Drawing.Size(241, 493);
+            this.flowSideBar.Size = new System.Drawing.Size(268, 493);
             this.flowSideBar.TabIndex = 3;
-            this.flowSideBar.Paint += new System.Windows.Forms.PaintEventHandler(this.flowSideBar_Paint);
             // 
             // txtOriginal
             // 
@@ -370,8 +404,8 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(50, 42);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(50, 3, 3, 3);
+            this.pictureBox1.Location = new System.Drawing.Point(60, 42);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(60, 3, 3, 3);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(145, 128);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -396,14 +430,13 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(16, 215);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(16, 3, 3, 3);
+            this.pictureBox2.Location = new System.Drawing.Point(30, 215);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(205, 98);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 3;
             this.pictureBox2.TabStop = false;
-            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // txtFilterValue
             // 
@@ -427,9 +460,62 @@
             this.tbFilterValue.Maximum = 100;
             this.tbFilterValue.Name = "tbFilterValue";
             this.tbFilterValue.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.tbFilterValue.Size = new System.Drawing.Size(172, 45);
+            this.tbFilterValue.Size = new System.Drawing.Size(205, 45);
             this.tbFilterValue.TabIndex = 4;
             this.tbFilterValue.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.tbFilterValue.Visible = false;
+            this.tbFilterValue.Scroll += new System.EventHandler(this.tbFilterValue_Scroll);
+            // 
+            // panelRGB
+            // 
+            this.panelRGB.Controls.Add(this.btnRgbRed);
+            this.panelRGB.Controls.Add(this.btnRgbGreen);
+            this.panelRGB.Controls.Add(this.btnRgbBlue);
+            this.panelRGB.Location = new System.Drawing.Point(30, 409);
+            this.panelRGB.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
+            this.panelRGB.Name = "panelRGB";
+            this.panelRGB.Size = new System.Drawing.Size(202, 27);
+            this.panelRGB.TabIndex = 9;
+            this.panelRGB.Visible = false;
+            // 
+            // btnRgbRed
+            // 
+            this.btnRgbRed.BackColor = System.Drawing.Color.White;
+            this.btnRgbRed.FlatAppearance.BorderSize = 0;
+            this.btnRgbRed.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRgbRed.Location = new System.Drawing.Point(7, 0);
+            this.btnRgbRed.Margin = new System.Windows.Forms.Padding(30, 3, 9, 3);
+            this.btnRgbRed.Name = "btnRgbRed";
+            this.btnRgbRed.Size = new System.Drawing.Size(49, 23);
+            this.btnRgbRed.TabIndex = 6;
+            this.btnRgbRed.Text = "Red";
+            this.btnRgbRed.UseVisualStyleBackColor = false;
+            // 
+            // btnRgbGreen
+            // 
+            this.btnRgbGreen.BackColor = System.Drawing.Color.White;
+            this.btnRgbGreen.FlatAppearance.BorderSize = 0;
+            this.btnRgbGreen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRgbGreen.Location = new System.Drawing.Point(74, 1);
+            this.btnRgbGreen.Margin = new System.Windows.Forms.Padding(9, 3, 9, 3);
+            this.btnRgbGreen.Name = "btnRgbGreen";
+            this.btnRgbGreen.Size = new System.Drawing.Size(49, 23);
+            this.btnRgbGreen.TabIndex = 7;
+            this.btnRgbGreen.Text = "Green";
+            this.btnRgbGreen.UseVisualStyleBackColor = false;
+            // 
+            // btnRgbBlue
+            // 
+            this.btnRgbBlue.BackColor = System.Drawing.Color.White;
+            this.btnRgbBlue.FlatAppearance.BorderSize = 0;
+            this.btnRgbBlue.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRgbBlue.Location = new System.Drawing.Point(141, 1);
+            this.btnRgbBlue.Margin = new System.Windows.Forms.Padding(9, 3, 9, 3);
+            this.btnRgbBlue.Name = "btnRgbBlue";
+            this.btnRgbBlue.Size = new System.Drawing.Size(49, 23);
+            this.btnRgbBlue.TabIndex = 8;
+            this.btnRgbBlue.Text = "Blue";
+            this.btnRgbBlue.UseVisualStyleBackColor = false;
             // 
             // pbMain
             // 
@@ -456,17 +542,43 @@
             this.flowImageEdited.Size = new System.Drawing.Size(292, 292);
             this.flowImageEdited.TabIndex = 4;
             // 
+            // panelCamara
+            // 
+            this.panelCamara.AutoSize = true;
+            this.panelCamara.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(144)))), ((int)(((byte)(178)))), ((int)(((byte)(192)))));
+            this.panelCamara.Controls.Add(this.pictureBox3);
+            this.panelCamara.Location = new System.Drawing.Point(1, 37);
+            this.panelCamara.Margin = new System.Windows.Forms.Padding(6, 3, 6, 3);
+            this.panelCamara.Name = "panelCamara";
+            this.panelCamara.Size = new System.Drawing.Size(915, 498);
+            this.panelCamara.TabIndex = 5;
+            this.panelCamara.Visible = false;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(106)))), ((int)(((byte)(115)))));
+            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
+            this.pictureBox3.Location = new System.Drawing.Point(45, 25);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(821, 444);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBox3.TabIndex = 0;
+            this.pictureBox3.TabStop = false;
+            this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
+            // 
             // formVsCam
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(106)))), ((int)(((byte)(115)))));
             this.ClientSize = new System.Drawing.Size(916, 535);
+            this.Controls.Add(this.panelCamara);
             this.Controls.Add(this.flowImageEdited);
             this.Controls.Add(this.flowSideBar);
             this.Controls.Add(this.divNavbar);
             this.Name = "formVsCam";
             this.Text = "VS CAM";
+            this.Load += new System.EventHandler(this.formVsCam_Load);
             this.divNavbar.ResumeLayout(false);
             this.divNavbar.PerformLayout();
             this.flowFiltros.ResumeLayout(false);
@@ -475,8 +587,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbFilterValue)).EndInit();
+            this.panelRGB.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbMain)).EndInit();
             this.flowImageEdited.ResumeLayout(false);
+            this.panelCamara.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -511,5 +626,12 @@
         private System.Windows.Forms.TextBox txtFilterValue;
         private System.Windows.Forms.TrackBar tbFilterValue;
         private System.Windows.Forms.FlowLayoutPanel flowFiltros;
+        private System.Windows.Forms.Button btnRgbRed;
+        private System.Windows.Forms.Button btnRgbGreen;
+        private System.Windows.Forms.Button btnRgbBlue;
+        private System.Windows.Forms.Panel panelRGB;
+        private System.Windows.Forms.Panel panelCamara;
+        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.Button btnExport;
     }
 }
