@@ -6,26 +6,61 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AForge.Video.DirectShow;
+using AForge.Video;
 using System.Windows.Forms;
 
 namespace vscam
 {
     public partial class formVsCam : Form
     {
+        private bool devicesExist;
+        private FilterInfoCollection myDevices;
+        private VideoCaptureDevice myWebCam;
+
+
         public formVsCam()
         {
             InitializeComponent();
         }
 
-        private void pbMain_Click(object sender, EventArgs e)
+        public void DeviceLoad()
         {
+            myDevices = new FilterInfoCollection(FilterCategory.VideoInputDevice);
+
+            if(myDevices.Count > 0)
+            {
+                devicesExist = true;
+
+                for (int i = 0; i < myDevices.Count; i++)
+                {
+                    cbDevices.Items.Add( myDevices[i].Name.ToString() );
+                }
+                cbDevices.Text = myDevices[0].Name.ToString();
+
+            }else
+            {
+                devicesExist = false;
+            }
+
 
         }
 
-        private void txtHistogram_TextChanged(object sender, EventArgs e)
+        public void CloseWebCam()
         {
+            if (myWebCam != null && myWebCam.IsRunning)
+            {
+                myWebCam.SignalToStop();
+                myWebCam = null;
+            }
 
         }
+
+        private void formVsCam_Load(object sender, EventArgs e)
+        {
+            DeviceLoad();
+        }
+
 
         private void btnFilters_Click(object sender, EventArgs e)
         {
@@ -132,11 +167,6 @@ namespace vscam
             panelRGB.Visible = true;
         }
 
-        private void formVsCam_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnCamara_Click(object sender, EventArgs e)
         {
             flowImageEdited.Visible = false;
@@ -147,11 +177,6 @@ namespace vscam
             btnCamara.Visible = false;
             btnFile.Visible = false;
             btnBack.Visible = true;
-
-        }
-
-        private void pictureBox3_Click(object sender, EventArgs e)
-        {
 
         }
 
@@ -171,6 +196,28 @@ namespace vscam
             Home form1 = new Home();
             form1.Show();
             this.Hide();
+        }
+
+        private void Capturing(object sender, NewFrameEventArgs eventArgs)
+        {
+            Bitmap Image = (Bitmap)eventArgs.Frame.Clone();
+            pbCamera.Image = Image;
+        }
+
+        private void btnStartCamera_Click(object sender, EventArgs e)
+        {
+            CloseWebCam();
+
+            int i = cbDevices.SelectedIndex;
+            string deviceName = myDevices[i].MonikerString;
+            myWebCam = new VideoCaptureDevice(deviceName);
+            myWebCam.NewFrame += new NewFrameEventHandler(Capturing);
+            myWebCam.Start();
+        }
+
+        private void formVsCam_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            CloseWebCam();
         }
     }
 }

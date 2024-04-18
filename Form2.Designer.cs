@@ -62,7 +62,9 @@
             this.pbMain = new System.Windows.Forms.PictureBox();
             this.flowImageEdited = new System.Windows.Forms.FlowLayoutPanel();
             this.panelCamara = new System.Windows.Forms.Panel();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.btnStartCamera = new System.Windows.Forms.Button();
+            this.cbDevices = new System.Windows.Forms.ComboBox();
+            this.pbCamera = new System.Windows.Forms.PictureBox();
             this.divNavbar.SuspendLayout();
             this.flowFiltros.SuspendLayout();
             this.flowSideBar.SuspendLayout();
@@ -73,7 +75,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbMain)).BeginInit();
             this.flowImageEdited.SuspendLayout();
             this.panelCamara.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbCamera)).BeginInit();
             this.SuspendLayout();
             // 
             // divNavbar
@@ -425,7 +427,6 @@
             this.txtHistogram.Size = new System.Drawing.Size(209, 16);
             this.txtHistogram.TabIndex = 2;
             this.txtHistogram.Text = "Histogram";
-            this.txtHistogram.TextChanged += new System.EventHandler(this.txtHistogram_TextChanged);
             // 
             // pictureBox2
             // 
@@ -530,7 +531,6 @@
             this.pbMain.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbMain.TabIndex = 0;
             this.pbMain.TabStop = false;
-            this.pbMain.Click += new System.EventHandler(this.pbMain_Click);
             // 
             // flowImageEdited
             // 
@@ -546,7 +546,9 @@
             // 
             this.panelCamara.AutoSize = true;
             this.panelCamara.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(144)))), ((int)(((byte)(178)))), ((int)(((byte)(192)))));
-            this.panelCamara.Controls.Add(this.pictureBox3);
+            this.panelCamara.Controls.Add(this.btnStartCamera);
+            this.panelCamara.Controls.Add(this.cbDevices);
+            this.panelCamara.Controls.Add(this.pbCamera);
             this.panelCamara.Location = new System.Drawing.Point(1, 37);
             this.panelCamara.Margin = new System.Windows.Forms.Padding(6, 3, 6, 3);
             this.panelCamara.Name = "panelCamara";
@@ -554,17 +556,34 @@
             this.panelCamara.TabIndex = 5;
             this.panelCamara.Visible = false;
             // 
-            // pictureBox3
+            // btnStartCamera
             // 
-            this.pictureBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(106)))), ((int)(((byte)(115)))));
-            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(45, 25);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(821, 444);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBox3.TabIndex = 0;
-            this.pictureBox3.TabStop = false;
-            this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
+            this.btnStartCamera.Location = new System.Drawing.Point(329, 454);
+            this.btnStartCamera.Name = "btnStartCamera";
+            this.btnStartCamera.Size = new System.Drawing.Size(75, 23);
+            this.btnStartCamera.TabIndex = 2;
+            this.btnStartCamera.Text = "Start";
+            this.btnStartCamera.UseVisualStyleBackColor = true;
+            this.btnStartCamera.Click += new System.EventHandler(this.btnStartCamera_Click);
+            // 
+            // cbDevices
+            // 
+            this.cbDevices.FormattingEnabled = true;
+            this.cbDevices.Location = new System.Drawing.Point(45, 456);
+            this.cbDevices.Name = "cbDevices";
+            this.cbDevices.Size = new System.Drawing.Size(265, 21);
+            this.cbDevices.TabIndex = 1;
+            // 
+            // pbCamera
+            // 
+            this.pbCamera.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(106)))), ((int)(((byte)(115)))));
+            this.pbCamera.Image = ((System.Drawing.Image)(resources.GetObject("pbCamera.Image")));
+            this.pbCamera.Location = new System.Drawing.Point(45, 25);
+            this.pbCamera.Name = "pbCamera";
+            this.pbCamera.Size = new System.Drawing.Size(821, 413);
+            this.pbCamera.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pbCamera.TabIndex = 0;
+            this.pbCamera.TabStop = false;
             // 
             // formVsCam
             // 
@@ -578,6 +597,7 @@
             this.Controls.Add(this.divNavbar);
             this.Name = "formVsCam";
             this.Text = "VS CAM";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.formVsCam_FormClosed);
             this.Load += new System.EventHandler(this.formVsCam_Load);
             this.divNavbar.ResumeLayout(false);
             this.divNavbar.PerformLayout();
@@ -591,7 +611,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbMain)).EndInit();
             this.flowImageEdited.ResumeLayout(false);
             this.panelCamara.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbCamera)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -631,7 +651,9 @@
         private System.Windows.Forms.Button btnRgbBlue;
         private System.Windows.Forms.Panel panelRGB;
         private System.Windows.Forms.Panel panelCamara;
-        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.PictureBox pbCamera;
         private System.Windows.Forms.Button btnExport;
+        private System.Windows.Forms.ComboBox cbDevices;
+        private System.Windows.Forms.Button btnStartCamera;
     }
 }
