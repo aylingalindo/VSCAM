@@ -218,6 +218,7 @@ namespace vscam
         private void formVsCam_FormClosed(object sender, FormClosedEventArgs e)
         {
             CloseWebCam();
+            Application.Exit();
         }
     }
 }

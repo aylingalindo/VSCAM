@@ -11,7 +11,7 @@ using System.Windows.Forms;
 namespace vscam
 {
     public partial class Home : Form
-    {
+    {// ESTE ES EL DE AYLIN 
         public Home()
         {
             InitializeComponent();
@@ -32,6 +32,11 @@ namespace vscam
             formVsCam form2 = new formVsCam();
             form2.Show();
             this.Hide();
+        }
+
+        private void Home_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

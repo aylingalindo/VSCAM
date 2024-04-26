@@ -92,9 +92,9 @@
             this.divNavbar.Controls.Add(this.btnExport);
             this.divNavbar.Dock = System.Windows.Forms.DockStyle.Top;
             this.divNavbar.Location = new System.Drawing.Point(0, 0);
-            this.divNavbar.Margin = new System.Windows.Forms.Padding(3, 3, 0, 0);
+            this.divNavbar.Margin = new System.Windows.Forms.Padding(4, 4, 0, 0);
             this.divNavbar.Name = "divNavbar";
-            this.divNavbar.Size = new System.Drawing.Size(916, 42);
+            this.divNavbar.Size = new System.Drawing.Size(1221, 52);
             this.divNavbar.TabIndex = 1;
             this.divNavbar.WrapContents = false;
             // 
@@ -106,8 +106,8 @@
             this.flowInsideNavbarContent.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.flowInsideNavbarContent.Dock = System.Windows.Forms.DockStyle.Top;
             this.divNavbar.SetFlowBreak(this.flowInsideNavbarContent, true);
-            this.flowInsideNavbarContent.Location = new System.Drawing.Point(3, 3);
-            this.flowInsideNavbarContent.Margin = new System.Windows.Forms.Padding(3, 3, 0, 3);
+            this.flowInsideNavbarContent.Location = new System.Drawing.Point(4, 4);
+            this.flowInsideNavbarContent.Margin = new System.Windows.Forms.Padding(4, 4, 0, 4);
             this.flowInsideNavbarContent.Name = "flowInsideNavbarContent";
             this.flowInsideNavbarContent.Size = new System.Drawing.Size(2, 2);
             this.flowInsideNavbarContent.TabIndex = 1;
@@ -119,10 +119,10 @@
             this.btnHome.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnHome.ForeColor = System.Drawing.Color.Transparent;
             this.btnHome.Image = ((System.Drawing.Image)(resources.GetObject("btnHome.Image")));
-            this.btnHome.Location = new System.Drawing.Point(5, 3);
-            this.btnHome.Margin = new System.Windows.Forms.Padding(0, 3, 0, 0);
+            this.btnHome.Location = new System.Drawing.Point(6, 4);
+            this.btnHome.Margin = new System.Windows.Forms.Padding(0, 4, 0, 0);
             this.btnHome.Name = "btnHome";
-            this.btnHome.Size = new System.Drawing.Size(41, 31);
+            this.btnHome.Size = new System.Drawing.Size(55, 38);
             this.btnHome.TabIndex = 0;
             this.btnHome.UseVisualStyleBackColor = false;
             this.btnHome.Click += new System.EventHandler(this.btnHome_Click);
@@ -135,10 +135,10 @@
             this.btnCamara.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCamara.ForeColor = System.Drawing.Color.Transparent;
             this.btnCamara.Image = ((System.Drawing.Image)(resources.GetObject("btnCamara.Image")));
-            this.btnCamara.Location = new System.Drawing.Point(46, 3);
-            this.btnCamara.Margin = new System.Windows.Forms.Padding(0, 3, 0, 0);
+            this.btnCamara.Location = new System.Drawing.Point(61, 4);
+            this.btnCamara.Margin = new System.Windows.Forms.Padding(0, 4, 0, 0);
             this.btnCamara.Name = "btnCamara";
-            this.btnCamara.Size = new System.Drawing.Size(42, 31);
+            this.btnCamara.Size = new System.Drawing.Size(56, 38);
             this.btnCamara.TabIndex = 1;
             this.btnCamara.UseVisualStyleBackColor = false;
             this.btnCamara.Click += new System.EventHandler(this.btnCamara_Click);
@@ -151,10 +151,10 @@
             this.btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBack.ForeColor = System.Drawing.Color.Transparent;
             this.btnBack.Image = ((System.Drawing.Image)(resources.GetObject("btnBack.Image")));
-            this.btnBack.Location = new System.Drawing.Point(88, 3);
-            this.btnBack.Margin = new System.Windows.Forms.Padding(0, 3, 0, 0);
+            this.btnBack.Location = new System.Drawing.Point(117, 4);
+            this.btnBack.Margin = new System.Windows.Forms.Padding(0, 4, 0, 0);
             this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(42, 31);
+            this.btnBack.Size = new System.Drawing.Size(56, 38);
             this.btnBack.TabIndex = 2;
             this.btnBack.UseVisualStyleBackColor = false;
             this.btnBack.Visible = false;
@@ -166,10 +166,10 @@
             this.btnFile.FlatAppearance.BorderSize = 0;
             this.btnFile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnFile.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFile.Location = new System.Drawing.Point(130, 3);
-            this.btnFile.Margin = new System.Windows.Forms.Padding(0, 3, 0, 0);
+            this.btnFile.Location = new System.Drawing.Point(173, 4);
+            this.btnFile.Margin = new System.Windows.Forms.Padding(0, 4, 0, 0);
             this.btnFile.Name = "btnFile";
-            this.btnFile.Size = new System.Drawing.Size(50, 31);
+            this.btnFile.Size = new System.Drawing.Size(67, 38);
             this.btnFile.TabIndex = 0;
             this.btnFile.Text = "File";
             this.btnFile.UseVisualStyleBackColor = false;
@@ -181,10 +181,10 @@
             this.btnFilters.FlatAppearance.BorderSize = 0;
             this.btnFilters.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnFilters.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFilters.Location = new System.Drawing.Point(180, 3);
-            this.btnFilters.Margin = new System.Windows.Forms.Padding(0, 3, 0, 0);
+            this.btnFilters.Location = new System.Drawing.Point(240, 4);
+            this.btnFilters.Margin = new System.Windows.Forms.Padding(0, 4, 0, 0);
             this.btnFilters.Name = "btnFilters";
-            this.btnFilters.Size = new System.Drawing.Size(55, 31);
+            this.btnFilters.Size = new System.Drawing.Size(73, 38);
             this.btnFilters.TabIndex = 1;
             this.btnFilters.Text = "Filters";
             this.btnFilters.UseVisualStyleBackColor = false;
@@ -203,9 +203,10 @@
             this.flowFiltros.Controls.Add(this.btnSharpen);
             this.flowFiltros.Controls.Add(this.btnBlur);
             this.flowFiltros.Controls.Add(this.btnEnhance);
-            this.flowFiltros.Location = new System.Drawing.Point(238, 3);
+            this.flowFiltros.Location = new System.Drawing.Point(317, 4);
+            this.flowFiltros.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.flowFiltros.Name = "flowFiltros";
-            this.flowFiltros.Size = new System.Drawing.Size(563, 34);
+            this.flowFiltros.Size = new System.Drawing.Size(751, 42);
             this.flowFiltros.TabIndex = 5;
             this.flowFiltros.Visible = false;
             // 
@@ -218,7 +219,7 @@
             this.btnBrightness.Location = new System.Drawing.Point(0, 0);
             this.btnBrightness.Margin = new System.Windows.Forms.Padding(0);
             this.btnBrightness.Name = "btnBrightness";
-            this.btnBrightness.Size = new System.Drawing.Size(79, 31);
+            this.btnBrightness.Size = new System.Drawing.Size(105, 38);
             this.btnBrightness.TabIndex = 2;
             this.btnBrightness.Text = "Brightness";
             this.btnBrightness.UseVisualStyleBackColor = false;
@@ -230,10 +231,10 @@
             this.btnInvert.FlatAppearance.BorderSize = 0;
             this.btnInvert.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnInvert.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnInvert.Location = new System.Drawing.Point(79, 0);
+            this.btnInvert.Location = new System.Drawing.Point(105, 0);
             this.btnInvert.Margin = new System.Windows.Forms.Padding(0);
             this.btnInvert.Name = "btnInvert";
-            this.btnInvert.Size = new System.Drawing.Size(55, 31);
+            this.btnInvert.Size = new System.Drawing.Size(73, 38);
             this.btnInvert.TabIndex = 3;
             this.btnInvert.Text = "Invert";
             this.btnInvert.UseVisualStyleBackColor = false;
@@ -245,10 +246,10 @@
             this.btnNoise.FlatAppearance.BorderSize = 0;
             this.btnNoise.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNoise.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNoise.Location = new System.Drawing.Point(134, 0);
+            this.btnNoise.Location = new System.Drawing.Point(178, 0);
             this.btnNoise.Margin = new System.Windows.Forms.Padding(0);
             this.btnNoise.Name = "btnNoise";
-            this.btnNoise.Size = new System.Drawing.Size(55, 31);
+            this.btnNoise.Size = new System.Drawing.Size(73, 38);
             this.btnNoise.TabIndex = 4;
             this.btnNoise.Text = "Noise";
             this.btnNoise.UseVisualStyleBackColor = false;
@@ -260,10 +261,10 @@
             this.btnContrast.FlatAppearance.BorderSize = 0;
             this.btnContrast.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnContrast.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnContrast.Location = new System.Drawing.Point(189, 0);
+            this.btnContrast.Location = new System.Drawing.Point(251, 0);
             this.btnContrast.Margin = new System.Windows.Forms.Padding(0);
             this.btnContrast.Name = "btnContrast";
-            this.btnContrast.Size = new System.Drawing.Size(68, 31);
+            this.btnContrast.Size = new System.Drawing.Size(91, 38);
             this.btnContrast.TabIndex = 5;
             this.btnContrast.Text = "Contrast";
             this.btnContrast.UseVisualStyleBackColor = false;
@@ -275,10 +276,10 @@
             this.btnRgb.FlatAppearance.BorderSize = 0;
             this.btnRgb.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRgb.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRgb.Location = new System.Drawing.Point(257, 0);
+            this.btnRgb.Location = new System.Drawing.Point(342, 0);
             this.btnRgb.Margin = new System.Windows.Forms.Padding(0);
             this.btnRgb.Name = "btnRgb";
-            this.btnRgb.Size = new System.Drawing.Size(43, 31);
+            this.btnRgb.Size = new System.Drawing.Size(57, 38);
             this.btnRgb.TabIndex = 6;
             this.btnRgb.Text = "RGB";
             this.btnRgb.UseVisualStyleBackColor = false;
@@ -290,10 +291,10 @@
             this.btnFlip.FlatAppearance.BorderSize = 0;
             this.btnFlip.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnFlip.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFlip.Location = new System.Drawing.Point(300, 0);
+            this.btnFlip.Location = new System.Drawing.Point(399, 0);
             this.btnFlip.Margin = new System.Windows.Forms.Padding(0);
             this.btnFlip.Name = "btnFlip";
-            this.btnFlip.Size = new System.Drawing.Size(43, 31);
+            this.btnFlip.Size = new System.Drawing.Size(57, 38);
             this.btnFlip.TabIndex = 7;
             this.btnFlip.Text = "Flip";
             this.btnFlip.UseVisualStyleBackColor = false;
@@ -305,10 +306,10 @@
             this.btnPixel.FlatAppearance.BorderSize = 0;
             this.btnPixel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPixel.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPixel.Location = new System.Drawing.Point(343, 0);
+            this.btnPixel.Location = new System.Drawing.Point(456, 0);
             this.btnPixel.Margin = new System.Windows.Forms.Padding(0);
             this.btnPixel.Name = "btnPixel";
-            this.btnPixel.Size = new System.Drawing.Size(43, 31);
+            this.btnPixel.Size = new System.Drawing.Size(57, 38);
             this.btnPixel.TabIndex = 8;
             this.btnPixel.Text = "Pixel";
             this.btnPixel.UseVisualStyleBackColor = false;
@@ -320,10 +321,10 @@
             this.btnSharpen.FlatAppearance.BorderSize = 0;
             this.btnSharpen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSharpen.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSharpen.Location = new System.Drawing.Point(386, 0);
+            this.btnSharpen.Location = new System.Drawing.Point(513, 0);
             this.btnSharpen.Margin = new System.Windows.Forms.Padding(0);
             this.btnSharpen.Name = "btnSharpen";
-            this.btnSharpen.Size = new System.Drawing.Size(64, 31);
+            this.btnSharpen.Size = new System.Drawing.Size(85, 38);
             this.btnSharpen.TabIndex = 9;
             this.btnSharpen.Text = "Sharpen";
             this.btnSharpen.UseVisualStyleBackColor = false;
@@ -335,10 +336,10 @@
             this.btnBlur.FlatAppearance.BorderSize = 0;
             this.btnBlur.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBlur.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBlur.Location = new System.Drawing.Point(450, 0);
+            this.btnBlur.Location = new System.Drawing.Point(598, 0);
             this.btnBlur.Margin = new System.Windows.Forms.Padding(0);
             this.btnBlur.Name = "btnBlur";
-            this.btnBlur.Size = new System.Drawing.Size(43, 31);
+            this.btnBlur.Size = new System.Drawing.Size(57, 38);
             this.btnBlur.TabIndex = 10;
             this.btnBlur.Text = "Blur";
             this.btnBlur.UseVisualStyleBackColor = false;
@@ -350,10 +351,10 @@
             this.btnEnhance.FlatAppearance.BorderSize = 0;
             this.btnEnhance.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEnhance.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEnhance.Location = new System.Drawing.Point(493, 0);
+            this.btnEnhance.Location = new System.Drawing.Point(655, 0);
             this.btnEnhance.Margin = new System.Windows.Forms.Padding(0);
             this.btnEnhance.Name = "btnEnhance";
-            this.btnEnhance.Size = new System.Drawing.Size(65, 31);
+            this.btnEnhance.Size = new System.Drawing.Size(87, 38);
             this.btnEnhance.TabIndex = 11;
             this.btnEnhance.Text = "Enhance";
             this.btnEnhance.UseVisualStyleBackColor = false;
@@ -365,9 +366,10 @@
             this.btnExport.FlatAppearance.BorderSize = 0;
             this.btnExport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExport.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExport.Location = new System.Drawing.Point(807, 3);
+            this.btnExport.Location = new System.Drawing.Point(1076, 4);
+            this.btnExport.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnExport.Name = "btnExport";
-            this.btnExport.Size = new System.Drawing.Size(57, 31);
+            this.btnExport.Size = new System.Drawing.Size(76, 38);
             this.btnExport.TabIndex = 12;
             this.btnExport.Text = "Export";
             this.btnExport.UseVisualStyleBackColor = false;
@@ -384,10 +386,10 @@
             this.flowSideBar.Controls.Add(this.tbFilterValue);
             this.flowSideBar.Controls.Add(this.panelRGB);
             this.flowSideBar.Dock = System.Windows.Forms.DockStyle.Right;
-            this.flowSideBar.Location = new System.Drawing.Point(648, 42);
-            this.flowSideBar.Margin = new System.Windows.Forms.Padding(9, 9, 3, 3);
+            this.flowSideBar.Location = new System.Drawing.Point(864, 52);
+            this.flowSideBar.Margin = new System.Windows.Forms.Padding(12, 11, 4, 4);
             this.flowSideBar.Name = "flowSideBar";
-            this.flowSideBar.Size = new System.Drawing.Size(268, 493);
+            this.flowSideBar.Size = new System.Drawing.Size(357, 606);
             this.flowSideBar.TabIndex = 3;
             // 
             // txtOriginal
@@ -395,21 +397,21 @@
             this.txtOriginal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(144)))), ((int)(((byte)(178)))), ((int)(((byte)(192)))));
             this.txtOriginal.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtOriginal.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtOriginal.Location = new System.Drawing.Point(10, 20);
-            this.txtOriginal.Margin = new System.Windows.Forms.Padding(10, 20, 3, 3);
+            this.txtOriginal.Location = new System.Drawing.Point(13, 25);
+            this.txtOriginal.Margin = new System.Windows.Forms.Padding(13, 25, 4, 4);
             this.txtOriginal.Name = "txtOriginal";
             this.txtOriginal.ReadOnly = true;
-            this.txtOriginal.Size = new System.Drawing.Size(209, 16);
+            this.txtOriginal.Size = new System.Drawing.Size(279, 19);
             this.txtOriginal.TabIndex = 0;
             this.txtOriginal.Text = "Original";
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(60, 42);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(60, 3, 3, 3);
+            this.pictureBox1.Location = new System.Drawing.Point(80, 52);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(80, 4, 4, 4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(145, 128);
+            this.pictureBox1.Size = new System.Drawing.Size(193, 158);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
@@ -420,21 +422,21 @@
             this.txtHistogram.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(144)))), ((int)(((byte)(178)))), ((int)(((byte)(192)))));
             this.txtHistogram.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtHistogram.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtHistogram.Location = new System.Drawing.Point(10, 193);
-            this.txtHistogram.Margin = new System.Windows.Forms.Padding(10, 20, 3, 3);
+            this.txtHistogram.Location = new System.Drawing.Point(13, 239);
+            this.txtHistogram.Margin = new System.Windows.Forms.Padding(13, 25, 4, 4);
             this.txtHistogram.Name = "txtHistogram";
             this.txtHistogram.ReadOnly = true;
-            this.txtHistogram.Size = new System.Drawing.Size(209, 16);
+            this.txtHistogram.Size = new System.Drawing.Size(279, 19);
             this.txtHistogram.TabIndex = 2;
             this.txtHistogram.Text = "Histogram";
             // 
             // pictureBox2
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(30, 215);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
+            this.pictureBox2.Location = new System.Drawing.Point(40, 266);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(40, 4, 4, 4);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(205, 98);
+            this.pictureBox2.Size = new System.Drawing.Size(273, 121);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 3;
             this.pictureBox2.TabStop = false;
@@ -445,23 +447,23 @@
             this.txtFilterValue.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(144)))), ((int)(((byte)(178)))), ((int)(((byte)(192)))));
             this.txtFilterValue.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtFilterValue.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFilterValue.Location = new System.Drawing.Point(10, 336);
-            this.txtFilterValue.Margin = new System.Windows.Forms.Padding(10, 20, 3, 3);
+            this.txtFilterValue.Location = new System.Drawing.Point(13, 416);
+            this.txtFilterValue.Margin = new System.Windows.Forms.Padding(13, 25, 4, 4);
             this.txtFilterValue.Name = "txtFilterValue";
             this.txtFilterValue.ReadOnly = true;
-            this.txtFilterValue.Size = new System.Drawing.Size(209, 16);
+            this.txtFilterValue.Size = new System.Drawing.Size(279, 19);
             this.txtFilterValue.TabIndex = 5;
             this.txtFilterValue.Text = "Filter Value";
             this.txtFilterValue.Visible = false;
             // 
             // tbFilterValue
             // 
-            this.tbFilterValue.Location = new System.Drawing.Point(30, 358);
-            this.tbFilterValue.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
+            this.tbFilterValue.Location = new System.Drawing.Point(40, 443);
+            this.tbFilterValue.Margin = new System.Windows.Forms.Padding(40, 4, 4, 4);
             this.tbFilterValue.Maximum = 100;
             this.tbFilterValue.Name = "tbFilterValue";
             this.tbFilterValue.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.tbFilterValue.Size = new System.Drawing.Size(205, 45);
+            this.tbFilterValue.Size = new System.Drawing.Size(273, 56);
             this.tbFilterValue.TabIndex = 4;
             this.tbFilterValue.TickStyle = System.Windows.Forms.TickStyle.None;
             this.tbFilterValue.Visible = false;
@@ -472,10 +474,10 @@
             this.panelRGB.Controls.Add(this.btnRgbRed);
             this.panelRGB.Controls.Add(this.btnRgbGreen);
             this.panelRGB.Controls.Add(this.btnRgbBlue);
-            this.panelRGB.Location = new System.Drawing.Point(30, 409);
-            this.panelRGB.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
+            this.panelRGB.Location = new System.Drawing.Point(40, 507);
+            this.panelRGB.Margin = new System.Windows.Forms.Padding(40, 4, 4, 4);
             this.panelRGB.Name = "panelRGB";
-            this.panelRGB.Size = new System.Drawing.Size(202, 27);
+            this.panelRGB.Size = new System.Drawing.Size(269, 33);
             this.panelRGB.TabIndex = 9;
             this.panelRGB.Visible = false;
             // 
@@ -484,10 +486,10 @@
             this.btnRgbRed.BackColor = System.Drawing.Color.White;
             this.btnRgbRed.FlatAppearance.BorderSize = 0;
             this.btnRgbRed.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRgbRed.Location = new System.Drawing.Point(7, 0);
-            this.btnRgbRed.Margin = new System.Windows.Forms.Padding(30, 3, 9, 3);
+            this.btnRgbRed.Location = new System.Drawing.Point(9, 0);
+            this.btnRgbRed.Margin = new System.Windows.Forms.Padding(40, 4, 12, 4);
             this.btnRgbRed.Name = "btnRgbRed";
-            this.btnRgbRed.Size = new System.Drawing.Size(49, 23);
+            this.btnRgbRed.Size = new System.Drawing.Size(65, 28);
             this.btnRgbRed.TabIndex = 6;
             this.btnRgbRed.Text = "Red";
             this.btnRgbRed.UseVisualStyleBackColor = false;
@@ -497,10 +499,10 @@
             this.btnRgbGreen.BackColor = System.Drawing.Color.White;
             this.btnRgbGreen.FlatAppearance.BorderSize = 0;
             this.btnRgbGreen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRgbGreen.Location = new System.Drawing.Point(74, 1);
-            this.btnRgbGreen.Margin = new System.Windows.Forms.Padding(9, 3, 9, 3);
+            this.btnRgbGreen.Location = new System.Drawing.Point(99, 1);
+            this.btnRgbGreen.Margin = new System.Windows.Forms.Padding(12, 4, 12, 4);
             this.btnRgbGreen.Name = "btnRgbGreen";
-            this.btnRgbGreen.Size = new System.Drawing.Size(49, 23);
+            this.btnRgbGreen.Size = new System.Drawing.Size(65, 28);
             this.btnRgbGreen.TabIndex = 7;
             this.btnRgbGreen.Text = "Green";
             this.btnRgbGreen.UseVisualStyleBackColor = false;
@@ -510,10 +512,10 @@
             this.btnRgbBlue.BackColor = System.Drawing.Color.White;
             this.btnRgbBlue.FlatAppearance.BorderSize = 0;
             this.btnRgbBlue.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRgbBlue.Location = new System.Drawing.Point(141, 1);
-            this.btnRgbBlue.Margin = new System.Windows.Forms.Padding(9, 3, 9, 3);
+            this.btnRgbBlue.Location = new System.Drawing.Point(188, 1);
+            this.btnRgbBlue.Margin = new System.Windows.Forms.Padding(12, 4, 12, 4);
             this.btnRgbBlue.Name = "btnRgbBlue";
-            this.btnRgbBlue.Size = new System.Drawing.Size(49, 23);
+            this.btnRgbBlue.Size = new System.Drawing.Size(65, 28);
             this.btnRgbBlue.TabIndex = 8;
             this.btnRgbBlue.Text = "Blue";
             this.btnRgbBlue.UseVisualStyleBackColor = false;
@@ -524,10 +526,10 @@
             this.pbMain.Image = ((System.Drawing.Image)(resources.GetObject("pbMain.Image")));
             this.pbMain.Location = new System.Drawing.Point(0, 0);
             this.pbMain.Margin = new System.Windows.Forms.Padding(0);
-            this.pbMain.MaximumSize = new System.Drawing.Size(750, 750);
-            this.pbMain.MinimumSize = new System.Drawing.Size(250, 250);
+            this.pbMain.MaximumSize = new System.Drawing.Size(1000, 923);
+            this.pbMain.MinimumSize = new System.Drawing.Size(333, 308);
             this.pbMain.Name = "pbMain";
-            this.pbMain.Size = new System.Drawing.Size(282, 282);
+            this.pbMain.Size = new System.Drawing.Size(376, 347);
             this.pbMain.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbMain.TabIndex = 0;
             this.pbMain.TabStop = false;
@@ -537,9 +539,10 @@
             this.flowImageEdited.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.flowImageEdited.AutoSize = true;
             this.flowImageEdited.Controls.Add(this.pbMain);
-            this.flowImageEdited.Location = new System.Drawing.Point(196, 134);
+            this.flowImageEdited.Location = new System.Drawing.Point(261, 165);
+            this.flowImageEdited.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.flowImageEdited.Name = "flowImageEdited";
-            this.flowImageEdited.Size = new System.Drawing.Size(292, 292);
+            this.flowImageEdited.Size = new System.Drawing.Size(389, 359);
             this.flowImageEdited.TabIndex = 4;
             // 
             // panelCamara
@@ -549,18 +552,19 @@
             this.panelCamara.Controls.Add(this.btnStartCamera);
             this.panelCamara.Controls.Add(this.cbDevices);
             this.panelCamara.Controls.Add(this.pbCamera);
-            this.panelCamara.Location = new System.Drawing.Point(1, 37);
-            this.panelCamara.Margin = new System.Windows.Forms.Padding(6, 3, 6, 3);
+            this.panelCamara.Location = new System.Drawing.Point(1, 46);
+            this.panelCamara.Margin = new System.Windows.Forms.Padding(8, 4, 8, 4);
             this.panelCamara.Name = "panelCamara";
-            this.panelCamara.Size = new System.Drawing.Size(915, 498);
+            this.panelCamara.Size = new System.Drawing.Size(1220, 613);
             this.panelCamara.TabIndex = 5;
             this.panelCamara.Visible = false;
             // 
             // btnStartCamera
             // 
-            this.btnStartCamera.Location = new System.Drawing.Point(329, 454);
+            this.btnStartCamera.Location = new System.Drawing.Point(439, 559);
+            this.btnStartCamera.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnStartCamera.Name = "btnStartCamera";
-            this.btnStartCamera.Size = new System.Drawing.Size(75, 23);
+            this.btnStartCamera.Size = new System.Drawing.Size(100, 28);
             this.btnStartCamera.TabIndex = 2;
             this.btnStartCamera.Text = "Start";
             this.btnStartCamera.UseVisualStyleBackColor = true;
@@ -569,32 +573,35 @@
             // cbDevices
             // 
             this.cbDevices.FormattingEnabled = true;
-            this.cbDevices.Location = new System.Drawing.Point(45, 456);
+            this.cbDevices.Location = new System.Drawing.Point(60, 561);
+            this.cbDevices.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cbDevices.Name = "cbDevices";
-            this.cbDevices.Size = new System.Drawing.Size(265, 21);
+            this.cbDevices.Size = new System.Drawing.Size(352, 24);
             this.cbDevices.TabIndex = 1;
             // 
             // pbCamera
             // 
             this.pbCamera.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(106)))), ((int)(((byte)(115)))));
             this.pbCamera.Image = ((System.Drawing.Image)(resources.GetObject("pbCamera.Image")));
-            this.pbCamera.Location = new System.Drawing.Point(45, 25);
+            this.pbCamera.Location = new System.Drawing.Point(60, 31);
+            this.pbCamera.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pbCamera.Name = "pbCamera";
-            this.pbCamera.Size = new System.Drawing.Size(821, 413);
-            this.pbCamera.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pbCamera.Size = new System.Drawing.Size(1095, 508);
+            this.pbCamera.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbCamera.TabIndex = 0;
             this.pbCamera.TabStop = false;
             // 
             // formVsCam
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(106)))), ((int)(((byte)(115)))));
-            this.ClientSize = new System.Drawing.Size(916, 535);
+            this.ClientSize = new System.Drawing.Size(1221, 658);
             this.Controls.Add(this.panelCamara);
             this.Controls.Add(this.flowImageEdited);
             this.Controls.Add(this.flowSideBar);
             this.Controls.Add(this.divNavbar);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "formVsCam";
             this.Text = "VS CAM";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.formVsCam_FormClosed);
