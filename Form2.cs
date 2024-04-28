@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,11 +18,25 @@ namespace vscam
         private bool devicesExist;
         private FilterInfoCollection myDevices;
         private VideoCaptureDevice myWebCam;
+        public Bitmap resultante;
+        public Bitmap original;
 
 
-        public formVsCam()
+        public formVsCam(Bitmap imagen)
         {
             InitializeComponent();
+            UpdateImage(imagen);
+
+
+        }
+        public void UpdateImage(Bitmap imagen)
+        {
+            if (imagen != null)
+            {
+                original = imagen;
+                pbMain.Image = new Bitmap(imagen);
+                pbOriginal.Image = new Bitmap(imagen);
+            }
         }
 
         public void DeviceLoad()
@@ -149,6 +164,36 @@ namespace vscam
             tbFilterValue.Visible = false;
             txtFilterValue.Visible = false;
             panelRGB.Visible = false;
+
+            if(original == null)
+            {
+                Console.Write("null imagen");
+            }else
+            {
+                Console.Write(original);
+            }
+
+            int x = 0;
+            int y = 0;
+            resultante = new Bitmap(original.Width, original.Height);
+            Color rColor = new Color();
+            Color oColor = new Color();
+
+            for(x=0; x < original.Width; x++)
+            {
+                for(y=0; y < original.Height; y++)
+                {
+                    oColor = original.GetPixel(x, y);
+
+                    rColor = Color.FromArgb(255 - oColor.R, 255 - oColor.G, 255 - oColor.B);
+
+                    resultante.SetPixel(x, y, rColor);
+                }
+            }
+
+            this.Invalidate();
+
+            pbMain.Image = resultante;
         }
 
         private void btnFlip_Click(object sender, EventArgs e)
@@ -219,6 +264,21 @@ namespace vscam
         {
             CloseWebCam();
             Application.Exit();
+        }
+
+        private void formVsCam_Paint(object sender, PaintEventArgs e)
+        {
+            if(resultante != null)
+            {
+                Graphics g = e.Graphics;
+
+                //AutoScrollMinSize = new Size(anchoVentana, altoVentana);
+                //
+                //g.DrawImage(resultante, new Rectangle(this.AutoScrollPosition.X, this.AutoScrollPosition.Y + 30, anchoVentana, altoVentana)
+                //    );
+                //
+                //g.Dispose();
+            }
         }
     }
 }
