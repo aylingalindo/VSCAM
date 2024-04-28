@@ -12,7 +12,9 @@ using System.Windows.Forms;
 namespace vscam
 {
     public partial class Home : Form
-    {// ESTE ES EL DE AYLIN 
+    {
+        public Bitmap original;
+
         public Home()
         {
             InitializeComponent();
@@ -41,7 +43,7 @@ namespace vscam
                     if (IsImageFile(file.FileName))
                     {
                         bitmapImage = new Bitmap(file.FileName);
-
+                        original = bitmapImage;
                         formVsCam form2 = new formVsCam(bitmapImage);
                         form2.Show();
                         this.Hide();

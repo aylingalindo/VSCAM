@@ -20,7 +20,7 @@ namespace vscam
         private VideoCaptureDevice myWebCam;
         public Bitmap resultante;
         public Bitmap original;
-
+        private Home form1 = new Home();
 
         public formVsCam(Bitmap imagen)
         {
@@ -33,7 +33,7 @@ namespace vscam
         {
             if (imagen != null)
             {
-                original = imagen;
+                original = new Bitmap(imagen);
                 pbMain.Image = new Bitmap(imagen);
                 pbOriginal.Image = new Bitmap(imagen);
             }
@@ -164,14 +164,6 @@ namespace vscam
             tbFilterValue.Visible = false;
             txtFilterValue.Visible = false;
             panelRGB.Visible = false;
-
-            if(original == null)
-            {
-                Console.Write("null imagen");
-            }else
-            {
-                Console.Write(original);
-            }
 
             int x = 0;
             int y = 0;
