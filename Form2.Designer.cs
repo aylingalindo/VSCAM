@@ -59,6 +59,8 @@
             this.btnRgbRed = new System.Windows.Forms.Button();
             this.btnRgbGreen = new System.Windows.Forms.Button();
             this.btnRgbBlue = new System.Windows.Forms.Button();
+            this.tbGamma2 = new System.Windows.Forms.TrackBar();
+            this.tbGamma1 = new System.Windows.Forms.TrackBar();
             this.pbMain = new System.Windows.Forms.PictureBox();
             this.flowImageEdited = new System.Windows.Forms.FlowLayoutPanel();
             this.panelCamara = new System.Windows.Forms.Panel();
@@ -72,6 +74,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbFilterValue)).BeginInit();
             this.panelRGB.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tbGamma2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbGamma1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbMain)).BeginInit();
             this.flowImageEdited.SuspendLayout();
             this.panelCamara.SuspendLayout();
@@ -383,6 +387,8 @@
             this.flowSideBar.Controls.Add(this.txtFilterValue);
             this.flowSideBar.Controls.Add(this.tbFilterValue);
             this.flowSideBar.Controls.Add(this.panelRGB);
+            this.flowSideBar.Controls.Add(this.tbGamma2);
+            this.flowSideBar.Controls.Add(this.tbGamma1);
             this.flowSideBar.Dock = System.Windows.Forms.DockStyle.Right;
             this.flowSideBar.Location = new System.Drawing.Point(648, 42);
             this.flowSideBar.Margin = new System.Windows.Forms.Padding(9, 9, 3, 3);
@@ -395,8 +401,8 @@
             this.txtOriginal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(144)))), ((int)(((byte)(178)))), ((int)(((byte)(192)))));
             this.txtOriginal.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtOriginal.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtOriginal.Location = new System.Drawing.Point(10, 20);
-            this.txtOriginal.Margin = new System.Windows.Forms.Padding(10, 20, 3, 3);
+            this.txtOriginal.Location = new System.Drawing.Point(10, 10);
+            this.txtOriginal.Margin = new System.Windows.Forms.Padding(10, 10, 3, 3);
             this.txtOriginal.Name = "txtOriginal";
             this.txtOriginal.ReadOnly = true;
             this.txtOriginal.Size = new System.Drawing.Size(209, 16);
@@ -405,12 +411,14 @@
             // 
             // pbOriginal
             // 
+            this.pbOriginal.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.pbOriginal.Image = ((System.Drawing.Image)(resources.GetObject("pbOriginal.Image")));
-            this.pbOriginal.Location = new System.Drawing.Point(45, 41);
-            this.pbOriginal.Margin = new System.Windows.Forms.Padding(45, 2, 2, 2);
+            this.pbOriginal.Location = new System.Drawing.Point(30, 34);
+            this.pbOriginal.Margin = new System.Windows.Forms.Padding(30, 5, 5, 5);
+            this.pbOriginal.MaximumSize = new System.Drawing.Size(500, 500);
             this.pbOriginal.Name = "pbOriginal";
-            this.pbOriginal.Size = new System.Drawing.Size(109, 104);
-            this.pbOriginal.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbOriginal.Size = new System.Drawing.Size(109, 109);
+            this.pbOriginal.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbOriginal.TabIndex = 1;
             this.pbOriginal.TabStop = false;
             // 
@@ -420,7 +428,7 @@
             this.txtHistogram.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(144)))), ((int)(((byte)(178)))), ((int)(((byte)(192)))));
             this.txtHistogram.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtHistogram.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtHistogram.Location = new System.Drawing.Point(10, 167);
+            this.txtHistogram.Location = new System.Drawing.Point(10, 168);
             this.txtHistogram.Margin = new System.Windows.Forms.Padding(10, 20, 3, 3);
             this.txtHistogram.Name = "txtHistogram";
             this.txtHistogram.ReadOnly = true;
@@ -431,7 +439,7 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(30, 189);
+            this.pictureBox2.Location = new System.Drawing.Point(30, 190);
             this.pictureBox2.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(205, 98);
@@ -445,7 +453,7 @@
             this.txtFilterValue.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(144)))), ((int)(((byte)(178)))), ((int)(((byte)(192)))));
             this.txtFilterValue.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtFilterValue.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFilterValue.Location = new System.Drawing.Point(10, 310);
+            this.txtFilterValue.Location = new System.Drawing.Point(10, 311);
             this.txtFilterValue.Margin = new System.Windows.Forms.Padding(10, 20, 3, 3);
             this.txtFilterValue.Name = "txtFilterValue";
             this.txtFilterValue.ReadOnly = true;
@@ -456,7 +464,7 @@
             // 
             // tbFilterValue
             // 
-            this.tbFilterValue.Location = new System.Drawing.Point(30, 332);
+            this.tbFilterValue.Location = new System.Drawing.Point(30, 333);
             this.tbFilterValue.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
             this.tbFilterValue.Maximum = 100;
             this.tbFilterValue.Name = "tbFilterValue";
@@ -472,7 +480,7 @@
             this.panelRGB.Controls.Add(this.btnRgbRed);
             this.panelRGB.Controls.Add(this.btnRgbGreen);
             this.panelRGB.Controls.Add(this.btnRgbBlue);
-            this.panelRGB.Location = new System.Drawing.Point(30, 383);
+            this.panelRGB.Location = new System.Drawing.Point(30, 384);
             this.panelRGB.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
             this.panelRGB.Name = "panelRGB";
             this.panelRGB.Size = new System.Drawing.Size(202, 27);
@@ -491,6 +499,7 @@
             this.btnRgbRed.TabIndex = 6;
             this.btnRgbRed.Text = "Red";
             this.btnRgbRed.UseVisualStyleBackColor = false;
+            this.btnRgbRed.Click += new System.EventHandler(this.btnRgbRed_Click);
             // 
             // btnRgbGreen
             // 
@@ -504,6 +513,7 @@
             this.btnRgbGreen.TabIndex = 7;
             this.btnRgbGreen.Text = "Green";
             this.btnRgbGreen.UseVisualStyleBackColor = false;
+            this.btnRgbGreen.Click += new System.EventHandler(this.btnRgbGreen_Click);
             // 
             // btnRgbBlue
             // 
@@ -517,6 +527,33 @@
             this.btnRgbBlue.TabIndex = 8;
             this.btnRgbBlue.Text = "Blue";
             this.btnRgbBlue.UseVisualStyleBackColor = false;
+            this.btnRgbBlue.Click += new System.EventHandler(this.btnRgbBlue_Click);
+            // 
+            // tbGamma2
+            // 
+            this.tbGamma2.Location = new System.Drawing.Point(30, 417);
+            this.tbGamma2.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
+            this.tbGamma2.Maximum = 100;
+            this.tbGamma2.Name = "tbGamma2";
+            this.tbGamma2.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.tbGamma2.Size = new System.Drawing.Size(205, 45);
+            this.tbGamma2.TabIndex = 10;
+            this.tbGamma2.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.tbGamma2.Visible = false;
+            this.tbGamma2.Scroll += new System.EventHandler(this.tbGamma2_Scroll);
+            // 
+            // tbGamma1
+            // 
+            this.tbGamma1.Location = new System.Drawing.Point(30, 468);
+            this.tbGamma1.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
+            this.tbGamma1.Maximum = 100;
+            this.tbGamma1.Name = "tbGamma1";
+            this.tbGamma1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.tbGamma1.Size = new System.Drawing.Size(205, 45);
+            this.tbGamma1.TabIndex = 11;
+            this.tbGamma1.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.tbGamma1.Visible = false;
+            this.tbGamma1.Scroll += new System.EventHandler(this.tbGamma1_Scroll);
             // 
             // pbMain
             // 
@@ -527,8 +564,8 @@
             this.pbMain.MaximumSize = new System.Drawing.Size(750, 750);
             this.pbMain.MinimumSize = new System.Drawing.Size(250, 250);
             this.pbMain.Name = "pbMain";
-            this.pbMain.Size = new System.Drawing.Size(282, 282);
-            this.pbMain.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbMain.Size = new System.Drawing.Size(428, 364);
+            this.pbMain.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbMain.TabIndex = 0;
             this.pbMain.TabStop = false;
             // 
@@ -537,9 +574,9 @@
             this.flowImageEdited.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.flowImageEdited.AutoSize = true;
             this.flowImageEdited.Controls.Add(this.pbMain);
-            this.flowImageEdited.Location = new System.Drawing.Point(196, 134);
+            this.flowImageEdited.Location = new System.Drawing.Point(130, 98);
             this.flowImageEdited.Name = "flowImageEdited";
-            this.flowImageEdited.Size = new System.Drawing.Size(292, 292);
+            this.flowImageEdited.Size = new System.Drawing.Size(428, 381);
             this.flowImageEdited.TabIndex = 4;
             // 
             // panelCamara
@@ -549,10 +586,10 @@
             this.panelCamara.Controls.Add(this.btnStartCamera);
             this.panelCamara.Controls.Add(this.cbDevices);
             this.panelCamara.Controls.Add(this.pbCamera);
-            this.panelCamara.Location = new System.Drawing.Point(0, 36);
+            this.panelCamara.Location = new System.Drawing.Point(0, 42);
             this.panelCamara.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.panelCamara.Name = "panelCamara";
-            this.panelCamara.Size = new System.Drawing.Size(916, 499);
+            this.panelCamara.Size = new System.Drawing.Size(916, 493);
             this.panelCamara.TabIndex = 5;
             this.panelCamara.Visible = false;
             // 
@@ -578,9 +615,9 @@
             // 
             this.pbCamera.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(106)))), ((int)(((byte)(115)))));
             this.pbCamera.Image = ((System.Drawing.Image)(resources.GetObject("pbCamera.Image")));
-            this.pbCamera.Location = new System.Drawing.Point(45, 25);
+            this.pbCamera.Location = new System.Drawing.Point(46, 26);
             this.pbCamera.Name = "pbCamera";
-            this.pbCamera.Size = new System.Drawing.Size(821, 413);
+            this.pbCamera.Size = new System.Drawing.Size(818, 413);
             this.pbCamera.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbCamera.TabIndex = 0;
             this.pbCamera.TabStop = false;
@@ -609,6 +646,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbFilterValue)).EndInit();
             this.panelRGB.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.tbGamma2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbGamma1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbMain)).EndInit();
             this.flowImageEdited.ResumeLayout(false);
             this.panelCamara.ResumeLayout(false);
@@ -656,5 +695,7 @@
         private System.Windows.Forms.Button btnExport;
         private System.Windows.Forms.ComboBox cbDevices;
         private System.Windows.Forms.Button btnStartCamera;
+        private System.Windows.Forms.TrackBar tbGamma2;
+        private System.Windows.Forms.TrackBar tbGamma1;
     }
 }
