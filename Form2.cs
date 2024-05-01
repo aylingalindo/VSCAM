@@ -22,6 +22,10 @@ namespace vscam
         public Bitmap original;
         private Home form1 = new Home();
         public string filtroActivo = "";
+        private int[] histogramaR = new int[256];
+        private int[] histogramaG = new int[256];
+        private int[] histogramaB = new int[256];
+        private int[,] conv3x3 = new int[3, 3];
 
         public float rg = 1.1f;
         public float gg = 1.1f;
@@ -32,7 +36,6 @@ namespace vscam
             InitializeComponent();
             UpdateImage(imagen);
 
-
         }
         public void UpdateImage(Bitmap imagen)
         {
@@ -41,7 +44,35 @@ namespace vscam
                 original = new Bitmap(imagen);
                 pbMain.Image = new Bitmap(imagen);
                 pbOriginal.Image = new Bitmap(imagen);
+                resultante = new Bitmap(original);
+
+                ActualizarHistograma();
             }
+        }
+
+        public void ActualizarHistograma() {
+
+            int x = 0;
+            int y = 0;
+            Color rColor = new Color();
+
+            for (x = 0; x < original.Width; x++)
+            {
+                for (y = 0; y < original.Height; y++)
+                {
+                    rColor = resultante.GetPixel(x, y);
+                    histogramaR[rColor.R]++;
+                    histogramaG[rColor.G]++;
+                    histogramaB[rColor.B]++;
+                }
+            }
+
+            Histogram h = new Histogram(histogramaR, histogramaG, histogramaB);
+            h.TopLevel = false;
+            h.Location = new Point(30, 190);
+            flowHistogram.Controls.Add(h);
+            h.BringToFront();
+            h.Show();
         }
 
         public void DeviceLoad()
@@ -374,6 +405,134 @@ namespace vscam
             pbMain.Image = resultante;
         }
 
+        public void SharpenFilter()
+        {
+            int x = 0;
+            int y = 0;
+            int[,,] buffer = new int[3,original.Height,original.Width];
+            resultante = new Bitmap(original.Width, original.Height);
+            Color rColor = new Color();
+            Color oColor = new Color();
+
+            int r = 0;
+            int g = 0;
+            int b = 0;
+
+            // read pixels
+            for (x = 0; x < original.Width; x++)
+            {
+                for (y = 0; y < original.Height; y++)
+                {
+                    oColor = original.GetPixel(x, y);
+
+                    buffer[0, y, x] = oColor.R;
+                    buffer[1, y, x] = oColor.G;
+                    buffer[2, y, x] = oColor.B;
+                }
+            }
+
+            // sharpen image
+            for (x = 1; x < original.Width -2; x++)
+            {
+                for (y = 1; y < original.Height -2; y++)
+                {
+
+                    r = (int)(buffer[0, y, x] + 0.5 * (buffer[0, y, x] - buffer[0, y - 1, x - 1]));
+                    g = (int)(buffer[1, y, x] + 0.5 * (buffer[1, y, x] - buffer[1, y - 1, x - 1]));
+                    b = (int)(buffer[2, y, x] + 0.5 * (buffer[2, y, x] - buffer[2, y - 1, x - 1]));
+
+                    if (r > 255)
+                        r = 255;
+                    if (r < 0)
+                        r = 0;
+                    if (g > 255)
+                        g = 255;
+                    if (g < 0)
+                        g = 0;
+                    if (b > 255)
+                        b = 255;
+                    if (b < 0)
+                        b = 0;
+
+
+                    rColor = Color.FromArgb(r, g, b);
+                    resultante.SetPixel(x, y, rColor);
+                }
+            }
+            this.Invalidate();
+            pbMain.Image = resultante;
+        }
+
+        public void GaussianBlurFilter(int radius)
+        {
+            resultante = new Bitmap(original.Width, original.Height);
+
+            double deviation = radius / 3.0;
+
+            // Create 1D Gaussian kernels for rows and columns
+            double[] kernelX = CreateGaussianKernel(radius, deviation);
+            double[] kernelY = CreateGaussianKernel(radius, deviation);
+
+            // Apply separable convolution along rows
+            ApplyConvolution(original, resultante, kernelX, radius, true);
+
+            // Apply separable convolution along columns
+            ApplyConvolution(resultante, resultante, kernelY, radius, false);
+
+            this.Invalidate();
+            pbMain.Image = resultante;
+        }
+
+        private static void ApplyConvolution(Bitmap source, Bitmap destination, double[] kernel, int radius, bool horizontal)
+        {
+            int size = 2 * radius + 1;
+            int offset = radius;
+
+            for (int y = 0; y < source.Height; y++)
+            {
+                for (int x = 0; x < source.Width; x++)
+                {
+                    double r = 0, g = 0, b = 0;
+
+                    for (int i = 0; i < size; i++)
+                    {
+                        int index = horizontal ? x - offset + i : y - offset + i;
+                        index = Math.Max(0, Math.Min(horizontal ? source.Width - 1 : source.Height - 1, index));
+
+                        Color pixelColor = horizontal ? source.GetPixel(index, y) : source.GetPixel(x, index);
+                        double weight = kernel[i];
+
+                        r += pixelColor.R * weight;
+                        g += pixelColor.G * weight;
+                        b += pixelColor.B * weight;
+                    }
+
+                    destination.SetPixel(x, y, Color.FromArgb((int)r, (int)g, (int)b));
+                }
+            }
+        }
+
+        private static double[] CreateGaussianKernel(int radius, double deviation)
+        {
+            int size = 2 * radius + 1;
+            double[] kernel = new double[size];
+            double sum = 0;
+
+            for (int i = -radius; i <= radius; i++)
+            {
+                double weight = Math.Exp(-(i * i) / (2 * deviation * deviation));
+                kernel[i + radius] = weight;
+                sum += weight;
+            }
+
+            for (int i = 0; i < size; i++)
+            {
+                kernel[i] /= sum;
+            }
+
+            return kernel;
+        }
+
         private void formVsCam_Load(object sender, EventArgs e)
         {
             DeviceLoad();
@@ -398,10 +557,14 @@ namespace vscam
             btnCamara.Visible = true;
             btnFilters.Visible = true;
             btnFile.Visible = true;
+            flowSideBar.Visible = true;
+            flowImageEdited.Visible = true;
 
             flowFiltros.Visible = false;
             txtFilterValue.Visible = false;
             tbFilterValue.Visible = false;
+            tbGamma1.Visible = false;
+            tbGamma2.Visible = false;
             panelRGB.Visible = false;
             btnExport.Visible = false;
             panelCamara.Visible = false;
@@ -412,6 +575,11 @@ namespace vscam
             filtroActivo = "Sharpen";
             tbFilterValue.Visible = true;
             txtFilterValue.Visible = true;
+
+            tbGamma1.Visible = false;
+            tbGamma2.Visible = false;
+
+            SharpenFilter();
         }
 
         private void btnBrightness_Click(object sender, EventArgs e)
@@ -419,6 +587,9 @@ namespace vscam
             filtroActivo = "Brightness";
             tbFilterValue.Visible = true;
             txtFilterValue.Visible = true;
+
+            tbGamma1.Visible = false;
+            tbGamma2.Visible = false;
 
             tbFilterValue.Minimum = 0;
             tbFilterValue.Maximum = 20;
@@ -451,6 +622,9 @@ namespace vscam
                     rg = tbFilterValue.Value / 10;
                     EnhanceFilter();
                     break;
+                case "Blur":
+                    GaussianBlurFilter(tbFilterValue.Value);
+                    break;
                 default:
                     break;
             }
@@ -463,6 +637,9 @@ namespace vscam
             tbFilterValue.Visible = true;
             txtFilterValue.Visible = true;
             panelRGB.Visible = false;
+
+            tbGamma1.Visible = false;
+            tbGamma2.Visible = false;
 
             tbFilterValue.Minimum = 0;
             tbFilterValue.Maximum = 20;
@@ -479,6 +656,9 @@ namespace vscam
             txtFilterValue.Visible = true;
             panelRGB.Visible = false;
 
+            tbGamma1.Visible = false;
+            tbGamma2.Visible = false;
+
             tbFilterValue.Minimum = -50;
             tbFilterValue.Maximum = 50;
             tbFilterValue.Value = 50;
@@ -493,6 +673,9 @@ namespace vscam
             txtFilterValue.Visible = true;
             panelRGB.Visible = false;
 
+            tbGamma1.Visible = false;
+            tbGamma2.Visible = false;
+
             tbFilterValue.Minimum = 2;
             tbFilterValue.Maximum = 100;
             tbFilterValue.Value = 100;
@@ -506,6 +689,15 @@ namespace vscam
             tbFilterValue.Visible = true;
             txtFilterValue.Visible = true;
             panelRGB.Visible = false;
+
+            tbGamma1.Visible = false;
+            tbGamma2.Visible = false;
+
+            tbFilterValue.Minimum = 1;
+            tbFilterValue.Maximum = 10;
+            tbFilterValue.Value = 5;
+
+            GaussianBlurFilter(5);
         }
 
         private void btnEnhance_Click(object sender, EventArgs e)
@@ -524,7 +716,7 @@ namespace vscam
             tbFilterValue.Minimum = 0;
             tbFilterValue.Maximum = 20;
             tbFilterValue.Value = 11;
-
+             
             tbGamma1.Minimum = 0;
             tbGamma1.Maximum = 20;
             tbGamma1.Value = 11;
@@ -542,6 +734,9 @@ namespace vscam
             tbFilterValue.Visible = false;
             txtFilterValue.Visible = false;
             panelRGB.Visible = false;
+
+            tbGamma1.Visible = false;
+            tbGamma2.Visible = false;
 
             int x = 0;
             int y = 0;
@@ -572,6 +767,9 @@ namespace vscam
             tbFilterValue.Visible = false;
             txtFilterValue.Visible = false;
             panelRGB.Visible = false;
+
+            tbGamma1.Visible = false;
+            tbGamma2.Visible = false;
 
             int x = 0;
             int y = 0;
@@ -605,6 +803,9 @@ namespace vscam
 
             // rgb buttons
             panelRGB.Visible = true;
+
+            tbGamma1.Visible = false;
+            tbGamma2.Visible = false;
 
             ColorFilter("r");
         }
