@@ -92,7 +92,7 @@ namespace vscam
 
                     double fps = capture.GetCaptureProperty(CapProp.Fps);
                     await Task.Delay((int)(1000 / fps));
-                    //ActualizarHistograma2(frame);
+                    ActualizarHistograma2(frame);
                 }
                 else
                 {
@@ -448,7 +448,7 @@ namespace vscam
                     {
                         for (ym = y; ym < (y+pixels); ym++)
                         {
-                            oColor = original.GetPixel(x, y);
+                            oColor = bitmap.GetPixel(x, y);
                             rs += oColor.R;
                             gs += oColor.G;
                             bs += oColor.B;
@@ -750,7 +750,8 @@ namespace vscam
             tbGamma1.Visible = false;
             tbGamma2.Visible = false;
 
-            pbMain.Image = SharpenFilter(original);
+            if (type == "i")
+                pbMain.Image = SharpenFilter(original);
         }
 
         private void btnBrightness_Click(object sender, EventArgs e)
@@ -768,7 +769,8 @@ namespace vscam
 
             scrollValue = 20;
 
-            pbMain.Image = BrightnessFilter(original);
+            if (type == "i")
+                pbMain.Image = BrightnessFilter(original);
         }
 
         private void tbFilterValue_Scroll(object sender, EventArgs e)
