@@ -92,9 +92,7 @@ namespace vscam
 
                     double fps = capture.GetCaptureProperty(CapProp.Fps);
                     await Task.Delay((int)(1000 / fps));
-                    //Descomentar al final para mostrar funcionalidad
-                    //UpdateHistogram(frame);
-                    //UpdateHistogram2(filteredFrame);
+                    //ActualizarHistograma2(frame);
                 }
                 else
                 {
@@ -144,6 +142,32 @@ namespace vscam
                 for (y = 0; y < original.Height; y++)
                 {
                     rColor = resultante.GetPixel(x, y);
+                    histogramaR[rColor.R]++;
+                    histogramaG[rColor.G]++;
+                    histogramaB[rColor.B]++;
+                }
+            }
+
+            Histogram h = new Histogram(histogramaR, histogramaG, histogramaB);
+            h.TopLevel = false;
+            h.Location = new Point(30, 190);
+            flowHistogram.Controls.Add(h);
+            h.BringToFront();
+            h.Show();
+        }
+
+        public void ActualizarHistograma2(Bitmap frame)
+        {
+
+            int x = 0;
+            int y = 0;
+            Color rColor = new Color();
+
+            for (x = 0; x < frame.Width; x++)
+            {
+                for (y = 0; y < frame.Height; y++)
+                {
+                    rColor = frame.GetPixel(x, y);
                     histogramaR[rColor.R]++;
                     histogramaG[rColor.G]++;
                     histogramaB[rColor.B]++;
