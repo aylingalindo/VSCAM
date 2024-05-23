@@ -29,6 +29,7 @@ namespace vscam
         private int[] histogramaG = new int[256];
         private int[] histogramaB = new int[256];
         private int[,] conv3x3 = new int[3, 3];
+        VideoCapture captureLocal;
 
         static readonly CascadeClassifier cascadeClassifier = new CascadeClassifier("haarcascade_frontalface_alt_tree.xml");
 
@@ -58,6 +59,7 @@ namespace vscam
                 pbOriginal.Image = original;
                 pbMain.Image = original;
                 UpdateVideo(capture);
+                captureLocal = capture;
             }
 
         }
@@ -689,7 +691,8 @@ namespace vscam
             btnBack.Visible = true;
 
             flowFiltros.Visible = true;
-
+            btn_pause.Visible = true;
+            btn_play.Visible = true;
         }
 
         private void btnBack_Click(object sender, EventArgs e)
@@ -710,6 +713,8 @@ namespace vscam
             panelRGB.Visible = false;
             btnExport.Visible = false;
             panelCamara.Visible = false;
+            btn_pause.Visible = true;
+            btn_play.Visible = true;
         }
 
         private void btnSharpen_Click(object sender, EventArgs e)
@@ -938,6 +943,8 @@ namespace vscam
             btnCamara.Visible = false;
             btnFile.Visible = false;
             btnBack.Visible = true;
+            btn_pause.Visible = false;
+            btn_play.Visible = false;
 
         }
 
@@ -946,7 +953,8 @@ namespace vscam
             btnFilters.Visible = false;
             btnCamara.Visible = false;
             btnFile.Visible = false;
-
+            btn_pause.Visible = true;
+            btn_play.Visible = true;
             btnExport.Visible = true;
             btnBack.Visible = true;
 
@@ -1044,6 +1052,21 @@ namespace vscam
             bg = tbGamma1.Value / 10;
             if (type == "i")
                 pbMain.Image = EnhanceFilter(original);
+        }
+
+        private void btn_pause_Click(object sender, EventArgs e)
+        {
+            pause = !pause;
+        }
+
+        private void btn_play_Click(object sender, EventArgs e)
+        {
+            if (pause)
+            {
+                pause = false;
+                return;
+            }
+            UpdateVideo(captureLocal);
         }
     }
 }
