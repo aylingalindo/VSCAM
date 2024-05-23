@@ -37,6 +37,10 @@ namespace vscam
         public float bg = 1.1f;
 
         public bool pause = false;
+        public string type = "i";
+
+        public int scrollValue = 0;
+        public string ColorFilterColor = "r";
 
         public formVsCam(Bitmap imagen, VideoCapture capture)
         {
@@ -47,6 +51,12 @@ namespace vscam
                 UpdateImage(imagen);
             }else if(capture != null)
             {
+                type = "v";
+                Mat m = new Mat();
+                capture.Read(m);
+                original = m.Bitmap;
+                pbOriginal.Image = original;
+                pbMain.Image = original;
                 UpdateVideo(capture);
             }
 
@@ -72,6 +82,7 @@ namespace vscam
                 {
                     Bitmap frame = m.Bitmap;
 
+
                     Bitmap filteredFrame = await Task.Run(() => ApplySelectedFilter(frame));
 
                     pbMain.Image = filteredFrame;
@@ -88,6 +99,36 @@ namespace vscam
                     capture.SetCaptureProperty(CapProp.PosFrames, 0);
                 }
             }
+        }
+
+        private Bitmap ApplySelectedFilter(Bitmap frame)
+        {
+            switch (filtroActivo)
+            {
+                case "Brightness":
+                    return BrightnessFilter(frame);
+                case "Noise":
+                    return NoiseFilter(frame);
+                case "Contrast":
+                    return ContrastFilter(frame);
+                case "Pixel":
+                    return PixelFilter(frame);
+                case "Enhance":
+                    return EnhanceFilter(frame);
+                case "Blur":
+                    return GaussianBlurFilter(frame);
+                case "Rgb":
+                    return ColorFilter(frame);
+                case "Sharpen":
+                    return SharpenFilter(frame);
+                case "Invert":
+                    return InvertFilter(frame);
+                case "Flip":
+                    return FlipFilter(frame);
+                default:
+                    return frame;
+            }
+
         }
 
         public void ActualizarHistograma() {
@@ -147,11 +188,13 @@ namespace vscam
 
         }
 
-        public void ColorFilter(string color)
+
+        /*-----------------------------------FILTROS--------------------------------*/
+        public Bitmap ColorFilter(Bitmap bitmap)
         {
             int x = 0;
             int y = 0;
-            resultante = new Bitmap(original.Width, original.Height);
+            resultante = new Bitmap(bitmap.Width, bitmap.Height);
             Color rColor = new Color();
             Color oColor = new Color();
 
@@ -159,32 +202,32 @@ namespace vscam
             int g = 0;
             int b = 0;
 
-            for (x = 0; x < original.Width; x++)
+            for (x = 0; x < bitmap.Width; x++)
             {
-                for (y = 0; y < original.Height; y++)
+                for (y = 0; y < bitmap.Height; y++)
                 {
-                    oColor = original.GetPixel(x, y);
+                    oColor = bitmap.GetPixel(x, y);
 
-                    if(color == "r")
+                    if(ColorFilterColor == "r")
                         rColor = Color.FromArgb(oColor.R, 0, 0);
-                    else if (color == "g")
+                    else if (ColorFilterColor == "g")
                         rColor = Color.FromArgb(0, oColor.G, 0);
-                    else if (color == "b")
+                    else if (ColorFilterColor == "b")
                         rColor = Color.FromArgb(0, 0, oColor.B);
 
                     resultante.SetPixel(x, y, rColor);
                 }
             }
             this.Invalidate();
-            pbMain.Image = resultante;
+            return resultante;
         }
 
-        public void BrightnessFilter(float pBrillo)
+        public Bitmap BrightnessFilter(Bitmap bitmap)
         {
-
+            float pBrillo = scrollValue / 10;
             int x = 0;
             int y = 0;
-            resultante = new Bitmap(original.Width, original.Height);
+            resultante = new Bitmap(bitmap.Width, bitmap.Height);
             Color rColor = new Color();
             Color oColor = new Color();
 
@@ -192,11 +235,11 @@ namespace vscam
             int g = 0;
             int b = 0;
 
-            for (x = 0; x < original.Width; x++)
+            for (x = 0; x < bitmap.Width; x++)
             {
-                for (y = 0; y < original.Height; y++)
+                for (y = 0; y < bitmap.Height; y++)
                 {
-                    oColor = original.GetPixel(x, y);
+                    oColor = bitmap.GetPixel(x, y);
 
                     r = (int)(oColor.R * pBrillo);
                     g = (int)(oColor.G * pBrillo);
@@ -222,11 +265,12 @@ namespace vscam
                 }
             }
             this.Invalidate();
-            pbMain.Image = resultante;
+            return resultante;
         }
 
-        public void NoiseFilter(int porcentaje)
+        public Bitmap NoiseFilter(Bitmap bitmap)
         {
+            int porcentaje = scrollValue;
             int x = 0;
             int y = 0;
 
@@ -237,19 +281,19 @@ namespace vscam
             Random rnd = new Random();
             Color rColor;
             Color oColor;
-            resultante = new Bitmap(original.Width, original.Height);
+            resultante = new Bitmap(bitmap.Width, bitmap.Height);
             int r = 0;
             int g = 0;
             int b = 0;
 
-            for (x = 0; x < original.Width; x++)
+            for (x = 0; x < bitmap.Width; x++)
             {
-                for (y = 0; y < original.Height; y++)
+                for (y = 0; y < bitmap.Height; y++)
                 {
                     if(rnd.Next(1,100) <= porcentaje)
                     {
                         pBrillo = rnd.Next(rangoMin, rangoMax) / 100.0f;
-                        oColor = original.GetPixel(x, y);
+                        oColor = bitmap.GetPixel(x, y);
 
                         r = (int)(oColor.R * pBrillo);
                         g = (int)(oColor.G * pBrillo);
@@ -274,23 +318,24 @@ namespace vscam
                     }
                     else
                     {
-                        rColor = original.GetPixel(x, y);
+                        rColor = bitmap.GetPixel(x, y);
                     }
                     resultante.SetPixel(x, y, rColor);
                 }
             }
             this.Invalidate();
-            pbMain.Image = resultante;
+            return resultante;
         }
 
-        public void ContrastFilter(int contraste)
+        public Bitmap ContrastFilter(Bitmap bitmap)
         {
+            int contraste = scrollValue;
             float c = (100.0f + contraste) / 100.0f;
             c *= c;
 
             int x = 0;
             int y = 0;
-            resultante = new Bitmap(original.Width, original.Height);
+            resultante = new Bitmap(bitmap.Width, bitmap.Height);
             Color rColor = new Color();
             Color oColor = new Color();
 
@@ -298,11 +343,11 @@ namespace vscam
             float g = 0;
             float b = 0;
 
-            for (x = 0; x < original.Width; x++)
+            for (x = 0; x < bitmap.Width; x++)
             {
-                for (y = 0; y < original.Height; y++)
+                for (y = 0; y < bitmap.Height; y++)
                 {
-                    oColor = original.GetPixel(x, y);
+                    oColor = bitmap.GetPixel(x, y);
 
                     r = ((((oColor.R / 255.0f) - 0.5f) * c) + 0.5f) * 255;
                     if (r > 255)
@@ -327,18 +372,19 @@ namespace vscam
                 }
             }
             this.Invalidate();
-            pbMain.Image = resultante;
+            return resultante;
 
         }
 
-        public void PixelFilter(int pixels)
+        public Bitmap PixelFilter(Bitmap bitmap)
         {
-            while (original.Width % pixels != 0 || original.Width % pixels != 0)
+            int pixels = scrollValue;
+            while (bitmap.Width % pixels != 0 || bitmap.Width % pixels != 0)
             {
                 pixels--;
                 if (pixels <= 0)
                 {
-                    while (original.Width % pixels != 0 || original.Width % pixels != 0)
+                    while (bitmap.Width % pixels != 0 || bitmap.Width % pixels != 0)
                     {
                         pixels++;
                     }
@@ -362,11 +408,11 @@ namespace vscam
             int g = 0;
             int b = 0;
 
-            resultante = new Bitmap(original.Width, original.Height);
+            resultante = new Bitmap(bitmap.Width, bitmap.Height);
 
-            for (x = 0; x < original.Width - pixels; x += pixels)
+            for (x = 0; x < bitmap.Width - pixels; x += pixels)
             {
-                for (y = 0; y < original.Height - pixels; y += pixels)
+                for (y = 0; y < bitmap.Height - pixels; y += pixels)
                 {
                     rs = 0;
                     gs = 0;
@@ -398,15 +444,16 @@ namespace vscam
                 }
             }
             this.Invalidate();
-            pbMain.Image = resultante;
+            return resultante;
 
         }
 
-        public void EnhanceFilter()
+        public Bitmap EnhanceFilter(Bitmap bitmap)
         {
+            rg = scrollValue / 10;
             int x = 0;
             int y = 0;
-            resultante = new Bitmap(original.Width, original.Height);
+            resultante = new Bitmap(bitmap.Width, bitmap.Height);
             Color rColor = new Color();
             Color oColor = new Color();
 
@@ -427,11 +474,11 @@ namespace vscam
             }
 
 
-            for (x = 0; x < original.Width; x++)
+            for (x = 0; x < bitmap.Width; x++)
             {
-                for (y = 0; y < original.Height; y++)
+                for (y = 0; y < bitmap.Height; y++)
                 {
-                    oColor = original.GetPixel(x, y);
+                    oColor = bitmap.GetPixel(x, y);
 
                     r = rGamma[oColor.R];
                     g = gGamma[oColor.G];
@@ -442,15 +489,16 @@ namespace vscam
                 }
             }
             this.Invalidate();
-            pbMain.Image = resultante;
+            return resultante;
         }
 
-        public void SharpenFilter()
+        public Bitmap SharpenFilter(Bitmap bitmap)
+
         {
             int x = 0;
             int y = 0;
-            int[,,] buffer = new int[3,original.Height,original.Width];
-            resultante = new Bitmap(original.Width, original.Height);
+            int[,,] buffer = new int[3, bitmap.Height, bitmap.Width];
+            resultante = new Bitmap(bitmap.Width, bitmap.Height);
             Color rColor = new Color();
             Color oColor = new Color();
 
@@ -459,11 +507,11 @@ namespace vscam
             int b = 0;
 
             // read pixels
-            for (x = 0; x < original.Width; x++)
+            for (x = 0; x < bitmap.Width; x++)
             {
-                for (y = 0; y < original.Height; y++)
+                for (y = 0; y < bitmap.Height; y++)
                 {
-                    oColor = original.GetPixel(x, y);
+                    oColor = bitmap.GetPixel(x, y);
 
                     buffer[0, y, x] = oColor.R;
                     buffer[1, y, x] = oColor.G;
@@ -472,9 +520,9 @@ namespace vscam
             }
 
             // sharpen image
-            for (x = 1; x < original.Width -2; x++)
+            for (x = 1; x < bitmap.Width -2; x++)
             {
-                for (y = 1; y < original.Height -2; y++)
+                for (y = 1; y < bitmap.Height -2; y++)
                 {
 
                     r = (int)(buffer[0, y, x] + 0.5 * (buffer[0, y, x] - buffer[0, y - 1, x - 1]));
@@ -500,11 +548,12 @@ namespace vscam
                 }
             }
             this.Invalidate();
-            pbMain.Image = resultante;
+            return resultante;
         }
 
-        public void GaussianBlurFilter(int radius)
+        public Bitmap GaussianBlurFilter(Bitmap bitmap)
         {
+            int radius = scrollValue;
             resultante = new Bitmap(original.Width, original.Height);
 
             double deviation = radius / 3.0;
@@ -520,8 +569,59 @@ namespace vscam
             ApplyConvolution(resultante, resultante, kernelY, radius, false);
 
             this.Invalidate();
-            pbMain.Image = resultante;
+            return resultante;
         }
+
+        public Bitmap InvertFilter(Bitmap bitmap)
+        {
+            int x = 0;
+            int y = 0;
+            resultante = new Bitmap(bitmap.Width, bitmap.Height);
+            Color rColor = new Color();
+            Color oColor = new Color();
+
+            for (x = 0; x < bitmap.Width; x++)
+            {
+                for (y = 0; y < bitmap.Height; y++)
+                {
+                    oColor = bitmap.GetPixel(x, y);
+
+                    rColor = Color.FromArgb(255 - oColor.R, 255 - oColor.G, 255 - oColor.B);
+
+                    resultante.SetPixel(x, y, rColor);
+                }
+            }
+
+            this.Invalidate();
+            return resultante;
+        }
+
+        public Bitmap FlipFilter(Bitmap bitmap)
+        {
+
+            int x = 0;
+            int y = 0;
+            resultante = new Bitmap(bitmap.Width, bitmap.Height);
+            Color rColor = new Color();
+            Color oColor = new Color();
+
+            for (x = 0; x < bitmap.Width; x++)
+            {
+                for (y = 0; y < bitmap.Height; y++)
+                {
+                    oColor = bitmap.GetPixel(x, y);
+
+                    rColor = Color.FromArgb(oColor.R, oColor.G, oColor.B);
+
+                    resultante.SetPixel(bitmap.Width - x - 1, y, rColor);
+
+                }
+            }
+
+            this.Invalidate();
+            return resultante;
+        }
+
 
         private static void ApplyConvolution(Bitmap source, Bitmap destination, double[] kernel, int radius, bool horizontal)
         {
@@ -572,6 +672,8 @@ namespace vscam
 
             return kernel;
         }
+         
+        /*----------------------------------EVENTOS----------------------------------*/
 
         private void formVsCam_Load(object sender, EventArgs e)
         {
@@ -619,7 +721,7 @@ namespace vscam
             tbGamma1.Visible = false;
             tbGamma2.Visible = false;
 
-            SharpenFilter();
+            pbMain.Image = SharpenFilter(original);
         }
 
         private void btnBrightness_Click(object sender, EventArgs e)
@@ -635,40 +737,41 @@ namespace vscam
             tbFilterValue.Maximum = 20;
             tbFilterValue.Value = 20;
 
+            scrollValue = 20;
 
-            float pBrillo = 2.0f;
-
-            BrightnessFilter(pBrillo);
+            pbMain.Image = BrightnessFilter(original);
         }
 
         private void tbFilterValue_Scroll(object sender, EventArgs e)
         {
+            scrollValue = tbFilterValue.Value;
+            if (type == "v")
+                return;
+
             switch (filtroActivo)
             { 
                 case "Brightness":
-                    float pBrillo = tbFilterValue.Value;
-                    BrightnessFilter(pBrillo / 10);
+                    resultante = BrightnessFilter(original);
                     break;
                 case "Noise":
-                    NoiseFilter(tbFilterValue.Value);
+                    resultante = NoiseFilter(original);
                     break;
                 case "Contrast":
-                    ContrastFilter(tbFilterValue.Value);
+                    resultante = ContrastFilter(original);
                     break;
                 case "Pixel":
-                    PixelFilter(tbFilterValue.Value);
+                    resultante = PixelFilter(original);
                     break;
                 case "Enhance":
-                    rg = tbFilterValue.Value / 10;
-                    EnhanceFilter();
+                    resultante = EnhanceFilter(original);
                     break;
                 case "Blur":
-                    GaussianBlurFilter(tbFilterValue.Value);
+                    resultante = GaussianBlurFilter(original);
                     break;
                 default:
                     break;
             }
-    
+            pbMain.Image = resultante;
         }
 
         private void btnNoise_Click(object sender, EventArgs e)
@@ -685,7 +788,10 @@ namespace vscam
             tbFilterValue.Maximum = 20;
             tbFilterValue.Value = 20;
 
-            NoiseFilter(20);
+            scrollValue = 20;
+
+            if(type == "i")
+                pbMain.Image = NoiseFilter(original);
 
         }
 
@@ -703,7 +809,10 @@ namespace vscam
             tbFilterValue.Maximum = 50;
             tbFilterValue.Value = 50;
 
-            ContrastFilter(50);
+            scrollValue = 50;
+
+            if (type == "i")
+                pbMain.Image = ContrastFilter(original);
         }
 
         private void btnPixel_Click(object sender, EventArgs e)
@@ -719,8 +828,10 @@ namespace vscam
             tbFilterValue.Minimum = 2;
             tbFilterValue.Maximum = 100;
             tbFilterValue.Value = 100;
+            scrollValue = 100;
 
-            PixelFilter(100);
+            if (type == "i")
+                pbMain.Image = PixelFilter(original);
         }
 
         private void btnBlur_Click(object sender, EventArgs e)
@@ -736,8 +847,10 @@ namespace vscam
             tbFilterValue.Minimum = 1;
             tbFilterValue.Maximum = 10;
             tbFilterValue.Value = 5;
+            scrollValue = 5;
 
-            GaussianBlurFilter(5);
+            if (type == "i")
+                pbMain.Image = GaussianBlurFilter(original);
         }
 
         private void btnEnhance_Click(object sender, EventArgs e)
@@ -765,7 +878,8 @@ namespace vscam
             tbGamma2.Maximum = 20;
             tbGamma2.Value = 11;
 
-            EnhanceFilter();
+            if (type == "i")
+                pbMain.Image = EnhanceFilter(original);
         }
 
         private void btnInvert_Click(object sender, EventArgs e)
@@ -778,27 +892,8 @@ namespace vscam
             tbGamma1.Visible = false;
             tbGamma2.Visible = false;
 
-            int x = 0;
-            int y = 0;
-            resultante = new Bitmap(original.Width, original.Height);
-            Color rColor = new Color();
-            Color oColor = new Color();
-
-            for(x=0; x < original.Width; x++)
-            {
-                for(y=0; y < original.Height; y++)
-                {
-                    oColor = original.GetPixel(x, y);
-
-                    rColor = Color.FromArgb(255 - oColor.R, 255 - oColor.G, 255 - oColor.B);
-
-                    resultante.SetPixel(x, y, rColor);
-                }
-            }
-
-            this.Invalidate();
-
-            pbMain.Image = resultante;
+            if (type == "i")
+                pbMain.Image = InvertFilter(original);
         }
 
         private void btnFlip_Click(object sender, EventArgs e)
@@ -811,28 +906,8 @@ namespace vscam
             tbGamma1.Visible = false;
             tbGamma2.Visible = false;
 
-            int x = 0;
-            int y = 0;
-            resultante = new Bitmap(original.Width, original.Height);
-            Color rColor = new Color();
-            Color oColor = new Color();
-
-            for(x = 0; x < original.Width; x++)
-            {
-                for(y = 0; y < original.Height; y++)
-                {
-                    oColor = original.GetPixel(x, y);
-
-                    rColor = Color.FromArgb(oColor.R, oColor.G, oColor.B);
-
-                    resultante.SetPixel(original.Width - x - 1, y, rColor);
-
-                }
-            }
-
-            this.Invalidate();
-
-            pbMain.Image = resultante;
+            if (type == "i")
+                pbMain.Image = FlipFilter(original);
         }
 
         private void btnRgb_Click(object sender, EventArgs e)
@@ -847,7 +922,10 @@ namespace vscam
             tbGamma1.Visible = false;
             tbGamma2.Visible = false;
 
-            ColorFilter("r");
+            ColorFilterColor = "r";
+
+            if (type == "i")
+                pbMain.Image = ColorFilter(original);
         }
 
         private void btnCamara_Click(object sender, EventArgs e)
@@ -935,29 +1013,37 @@ namespace vscam
 
         private void btnRgbRed_Click(object sender, EventArgs e)
         {
-            ColorFilter("r");
+            ColorFilterColor = "r";
+            if (type == "i")
+                pbMain.Image = ColorFilter(original);
         }
 
         private void btnRgbGreen_Click(object sender, EventArgs e)
         {
-            ColorFilter("g");
+            ColorFilterColor = "g";
+            if (type == "i")
+                pbMain.Image = ColorFilter(original);
         }
 
         private void btnRgbBlue_Click(object sender, EventArgs e)
         {
-            ColorFilter("b");
+            ColorFilterColor = "b";
+            if (type == "i")
+                pbMain.Image = ColorFilter(original);
         }
 
         private void tbGamma2_Scroll(object sender, EventArgs e)
         {
             gg = tbGamma2.Value / 10;
-            EnhanceFilter();
+            if (type == "i")
+                pbMain.Image = EnhanceFilter(original);
         }
 
         private void tbGamma1_Scroll(object sender, EventArgs e)
         {
             bg = tbGamma1.Value / 10;
-            EnhanceFilter();
+            if (type == "i")
+                pbMain.Image = EnhanceFilter(original);
         }
     }
 }
