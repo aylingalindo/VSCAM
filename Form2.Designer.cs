@@ -71,6 +71,8 @@
             this.pbCamera = new System.Windows.Forms.PictureBox();
             this.btn_pause = new System.Windows.Forms.Button();
             this.btn_play = new System.Windows.Forms.Button();
+            this.lbl_NumUser = new System.Windows.Forms.Label();
+            this.lblfaces = new System.Windows.Forms.Label();
             this.divNavbar.SuspendLayout();
             this.flowFiltros.SuspendLayout();
             this.flowSideBar.SuspendLayout();
@@ -606,6 +608,8 @@
             // 
             this.panelCamara.AutoSize = true;
             this.panelCamara.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(144)))), ((int)(((byte)(178)))), ((int)(((byte)(192)))));
+            this.panelCamara.Controls.Add(this.lblfaces);
+            this.panelCamara.Controls.Add(this.lbl_NumUser);
             this.panelCamara.Controls.Add(this.btnStartCamera);
             this.panelCamara.Controls.Add(this.cbDevices);
             this.panelCamara.Controls.Add(this.pbCamera);
@@ -668,6 +672,26 @@
             this.btn_play.UseVisualStyleBackColor = true;
             this.btn_play.Click += new System.EventHandler(this.btn_play_Click);
             // 
+            // lbl_NumUser
+            // 
+            this.lbl_NumUser.AutoSize = true;
+            this.lbl_NumUser.Font = new System.Drawing.Font("Trebuchet MS", 9.75F);
+            this.lbl_NumUser.Location = new System.Drawing.Point(735, 561);
+            this.lbl_NumUser.Name = "lbl_NumUser";
+            this.lbl_NumUser.Size = new System.Drawing.Size(19, 23);
+            this.lbl_NumUser.TabIndex = 3;
+            this.lbl_NumUser.Text = "0";
+            // 
+            // lblfaces
+            // 
+            this.lblfaces.AutoSize = true;
+            this.lblfaces.Font = new System.Drawing.Font("Trebuchet MS", 9.75F);
+            this.lblfaces.Location = new System.Drawing.Point(589, 561);
+            this.lblfaces.Name = "lblfaces";
+            this.lblfaces.Size = new System.Drawing.Size(140, 23);
+            this.lblfaces.TabIndex = 4;
+            this.lblfaces.Text = "Number of faces:";
+            // 
             // formVsCam
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -703,6 +727,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbMain)).EndInit();
             this.flowImageEdited.ResumeLayout(false);
             this.panelCamara.ResumeLayout(false);
+            this.panelCamara.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbCamera)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -753,5 +778,7 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private System.Windows.Forms.Button btn_pause;
         private System.Windows.Forms.Button btn_play;
+        private System.Windows.Forms.Label lbl_NumUser;
+        private System.Windows.Forms.Label lblfaces;
     }
 }

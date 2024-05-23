@@ -972,8 +972,12 @@ namespace vscam
             Bitmap bitmap = (Bitmap)eventArgs.Frame.Clone();
             Image<Bgr, byte> grayImage = new Image<Bgr, byte>(bitmap);
             Rectangle[] rectangles = cascadeClassifier.DetectMultiScale(grayImage, 1.2, 1);
-            
-            foreach(Rectangle rectangle in rectangles)
+            int numRostros = rectangles.Length;
+            if (lbl_NumUser.IsHandleCreated)
+            {
+                lbl_NumUser.Invoke((MethodInvoker)(() => lbl_NumUser.Text = $"{numRostros}"));
+            }
+            foreach (Rectangle rectangle in rectangles)
             {
                 using(Graphics graphics = Graphics.FromImage(bitmap))
                 {
