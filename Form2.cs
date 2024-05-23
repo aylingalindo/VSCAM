@@ -12,6 +12,7 @@ using AForge.Video;
 using System.Windows.Forms;
 using Emgu.CV;
 using Emgu.CV.Structure;
+using Emgu.CV.CvEnum;
 
 namespace vscam
 {
@@ -35,22 +36,57 @@ namespace vscam
         public float gg = 1.1f;
         public float bg = 1.1f;
 
-        public formVsCam(Bitmap imagen)
+        public bool pause = false;
+
+        public formVsCam(Bitmap imagen, VideoCapture capture)
         {
             InitializeComponent();
-            UpdateImage(imagen);
+
+            if (imagen != null)
+            {
+                UpdateImage(imagen);
+            }else if(capture != null)
+            {
+                UpdateVideo(capture);
+            }
 
         }
         public void UpdateImage(Bitmap imagen)
         {
-            if (imagen != null)
-            {
-                original = new Bitmap(imagen);
-                pbMain.Image = new Bitmap(imagen);
-                pbOriginal.Image = new Bitmap(imagen);
-                resultante = new Bitmap(original);
+            original = new Bitmap(imagen);
+            pbMain.Image = new Bitmap(imagen);
+            pbOriginal.Image = new Bitmap(imagen);
+            resultante = new Bitmap(original);
 
-                ActualizarHistograma();
+            ActualizarHistograma();
+        }
+
+        public async void UpdateVideo(VideoCapture capture)
+        {
+            while (!pause)
+            {
+                Mat m = new Mat();
+                capture.Read(m);
+
+                if (!m.IsEmpty)
+                {
+                    Bitmap frame = m.Bitmap;
+
+                    Bitmap filteredFrame = await Task.Run(() => ApplySelectedFilter(frame));
+
+                    pbMain.Image = filteredFrame;
+                    pbOriginal.Image = m.Bitmap;
+
+                    double fps = capture.GetCaptureProperty(CapProp.Fps);
+                    await Task.Delay((int)(1000 / fps));
+                    //Descomentar al final para mostrar funcionalidad
+                    //UpdateHistogram(frame);
+                    //UpdateHistogram2(filteredFrame);
+                }
+                else
+                {
+                    capture.SetCaptureProperty(CapProp.PosFrames, 0);
+                }
             }
         }
 

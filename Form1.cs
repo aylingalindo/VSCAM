@@ -8,6 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Emgu.CV;
+using Emgu.CV.Structure;
 
 namespace vscam
 {
@@ -33,7 +35,7 @@ namespace vscam
         private void pictureBox2_Click(object sender, EventArgs e)
         {
             OpenFileDialog file = new OpenFileDialog();
-            file.Filter = "archivos de imagenes (*.png; *.jpg)| *.png; *.jpg";
+            file.Filter = "Archivos de imagen (*.png; *.jpg)|*.png;*.jpg|Archivos de video (*.mp4; *.avi)|*.mp4;*.avi";
 
             if (file.ShowDialog() == DialogResult.OK)
             {
@@ -44,16 +46,22 @@ namespace vscam
                     {
                         bitmapImage = new Bitmap(file.FileName);
                         original = bitmapImage;
-                        formVsCam form2 = new formVsCam(bitmapImage);
+                        formVsCam form2 = new formVsCam(bitmapImage, null);
+                        form2.Show();
+                        this.Hide();
+                    }else if (IsVideoFile(file.FileName))
+                    {
+                        VideoCapture capture = new VideoCapture(file.FileName);
+                        formVsCam form2 = new formVsCam(null, capture);
                         form2.Show();
                         this.Hide();
                     }
                     else
                     {
-                        MessageBox.Show("Please select a valid image file.");
+                        MessageBox.Show("Please select a valid image or video file.");
                     }
                 }
-                catch (Exception ex)
+                 catch (Exception ex)
                 {
                     MessageBox.Show("Error loading image: " + ex.Message);
                 }
@@ -79,6 +87,14 @@ namespace vscam
             return !string.IsNullOrEmpty(extension) &&
                    (extension.Equals(".png", StringComparison.OrdinalIgnoreCase) ||
                     extension.Equals(".jpg", StringComparison.OrdinalIgnoreCase));
+        }
+
+        private bool IsVideoFile(string filePath)
+        {
+            string extension = Path.GetExtension(filePath);
+            return !string.IsNullOrEmpty(extension) &&
+                   (extension.Equals(".mp4", StringComparison.OrdinalIgnoreCase) ||
+                    extension.Equals(".avi", StringComparison.OrdinalIgnoreCase));
         }
     }
 }
