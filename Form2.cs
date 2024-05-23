@@ -751,7 +751,10 @@ namespace vscam
             tbGamma2.Visible = false;
 
             if (type == "i")
+            {
                 pbMain.Image = SharpenFilter(original);
+                ActualizarHistograma();
+            }
         }
 
         private void btnBrightness_Click(object sender, EventArgs e)
@@ -770,7 +773,10 @@ namespace vscam
             scrollValue = 20;
 
             if (type == "i")
+            {
                 pbMain.Image = BrightnessFilter(original);
+                ActualizarHistograma();
+            }
         }
 
         private void tbFilterValue_Scroll(object sender, EventArgs e)
@@ -803,6 +809,7 @@ namespace vscam
                     break;
             }
             pbMain.Image = resultante;
+            ActualizarHistograma();
         }
 
         private void btnNoise_Click(object sender, EventArgs e)
@@ -821,8 +828,11 @@ namespace vscam
 
             scrollValue = 20;
 
-            if(type == "i")
+            if (type == "i")
+            {
                 pbMain.Image = NoiseFilter(original);
+                ActualizarHistograma();
+            }
 
         }
 
@@ -843,7 +853,10 @@ namespace vscam
             scrollValue = 50;
 
             if (type == "i")
+            {
                 pbMain.Image = ContrastFilter(original);
+                ActualizarHistograma();
+            }
         }
 
         private void btnPixel_Click(object sender, EventArgs e)
@@ -862,7 +875,10 @@ namespace vscam
             scrollValue = 100;
 
             if (type == "i")
+            {
                 pbMain.Image = PixelFilter(original);
+                ActualizarHistograma();
+            }
         }
 
         private void btnBlur_Click(object sender, EventArgs e)
@@ -881,7 +897,9 @@ namespace vscam
             scrollValue = 5;
 
             if (type == "i")
+            {
                 pbMain.Image = GaussianBlurFilter(original);
+            }
         }
 
         private void btnEnhance_Click(object sender, EventArgs e)
@@ -910,7 +928,10 @@ namespace vscam
             tbGamma2.Value = 11;
 
             if (type == "i")
+            {
                 pbMain.Image = EnhanceFilter(original);
+                ActualizarHistograma();
+            }
         }
 
         private void btnInvert_Click(object sender, EventArgs e)
@@ -924,7 +945,10 @@ namespace vscam
             tbGamma2.Visible = false;
 
             if (type == "i")
+            {
                 pbMain.Image = InvertFilter(original);
+                ActualizarHistograma();
+            }
         }
 
         private void btnFlip_Click(object sender, EventArgs e)
@@ -938,7 +962,10 @@ namespace vscam
             tbGamma2.Visible = false;
 
             if (type == "i")
+            {
                 pbMain.Image = FlipFilter(original);
+                ActualizarHistograma();
+            }
         }
 
         private void btnRgb_Click(object sender, EventArgs e)
@@ -956,7 +983,10 @@ namespace vscam
             ColorFilterColor = "r";
 
             if (type == "i")
+            {
                 pbMain.Image = ColorFilter(original);
+                ActualizarHistograma();
+            }
         }
 
         private void btnCamara_Click(object sender, EventArgs e)
@@ -1053,35 +1083,50 @@ namespace vscam
         {
             ColorFilterColor = "r";
             if (type == "i")
+            {
                 pbMain.Image = ColorFilter(original);
+                ActualizarHistograma();
+            }
         }
 
         private void btnRgbGreen_Click(object sender, EventArgs e)
         {
             ColorFilterColor = "g";
             if (type == "i")
+            {
                 pbMain.Image = ColorFilter(original);
+                ActualizarHistograma();
+            }
         }
 
         private void btnRgbBlue_Click(object sender, EventArgs e)
         {
             ColorFilterColor = "b";
             if (type == "i")
+            {
                 pbMain.Image = ColorFilter(original);
+                ActualizarHistograma();
+            }
         }
 
         private void tbGamma2_Scroll(object sender, EventArgs e)
         {
             gg = tbGamma2.Value / 10;
             if (type == "i")
+            {
                 pbMain.Image = EnhanceFilter(original);
+                ActualizarHistograma();
+            }
         }
 
         private void tbGamma1_Scroll(object sender, EventArgs e)
         {
             bg = tbGamma1.Value / 10;
             if (type == "i")
+            {
                 pbMain.Image = EnhanceFilter(original);
+                ActualizarHistograma();
+            }
         }
 
         private void btn_pause_Click(object sender, EventArgs e)
